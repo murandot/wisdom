@@ -36,6 +36,7 @@ Things you may want to cover:
 | grade_id           | integer |             |
 | club_id            | integer |             |
 | duty_id            | integer |             |
+| avatar             | string  |             |
 
 ### Association
 - has_many :mamterials

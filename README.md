@@ -28,7 +28,7 @@ Things you may want to cover:
 ## users テーブル
 | Column             | Type    | Option      |
 | ------------------ | ------- | ------------|
-| neme               | string  | null: false |
+| name               | string  | null: false |
 | email              | string  | null: false |
 | encrypted_password | string  | null: false |
 | school_category_id | integer | null: false |

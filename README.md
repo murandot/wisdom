@@ -28,7 +28,7 @@ Things you may want to cover:
 ## users テーブル
 | Column             | Type    | Option      |
 | ------------------ | ------- | ------------|
-| name               | string  | null: false |
+| nickname           | string  | null: false |
 | email              | string  | null: false |
 | encrypted_password | string  | null: false |
 | school_category_id | integer | null: false |
@@ -53,7 +53,7 @@ Things you may want to cover:
 - has_many :followers, through: :reverse_of_relationships, source: :user
 - has_many :rooms, through: :rooms
 - has_many :members
-- has_many :messeges
+- has_many :messages
 
 
 

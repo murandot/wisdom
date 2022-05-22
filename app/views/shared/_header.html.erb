@@ -1,12 +1,11 @@
 <header class='top-page-header'>
   <div class='nav-bar-contents'>
     <div class='logo'>
-      <%= link_to image_tag("logo.png", class:"logo-icon"), "/" %>
+      <%= link_to image_tag("logo.png", class:"logo-icon"), homes_path %>
     </div>
     <div class='nav'>
       <ul class='lists-left'>
-        <li><%= link_to 'wisdom', "#", class: "home" %></li>
-        <li><%= link_to '教材を見る', "#", class: "watch" %></li>
+        <li><%= link_to 'wisdom', homes_path, class: "home" %></li>
         <li><%= link_to '記事を見る', "#", class: "watch" %></li>
         <li><%= link_to '相談を見る', "#", class: "watch" %></li>
       </ul>
@@ -26,7 +25,7 @@
             </svg>
           <% end %>
         </li>
-        <%= link_to image_tag("user.png", class:"user-icon"), "/" %>
+        <%= link_to image_tag("user.png", class:"user-icon"), user_path(current_user) %>
       </ul>
     </div>
   </div>
@@ -41,5 +40,6 @@
         </svg>
       </button>
     </form>
+    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %>
   </div>
 </header>

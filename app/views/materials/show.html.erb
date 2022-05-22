@@ -1,0 +1,82 @@
+<%= render "shared/header" %>
+
+<%# 教材の概要 %>
+<div class="item-show">
+  <div class="item-box">
+    <h2 class="name">
+      <%= @material.title %>
+    </h2>
+    <div class="item-img-content">
+      <%= image_tag 'card.png', class: 'card__img' %>
+    </div>
+
+    <% if current_user == @material.user %>
+      <%= link_to "編集", '#', method: :get, class: "item-red-btn" %>  <%#edit_material_path(@material)%>
+      <p class="or-text">or</p>
+      <%= link_to "削除", material_path(@material), method: :delete, class:"item-destroy" %>
+    <% end %>
+
+    <div class="item-explain-box">
+      <span><%= @material.content %></span>
+    </div>
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-item">出品者</th>
+          <td class="detail-value"><%= @material.user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">学校</th>
+          <td class="detail-value"><%= @material.school_category.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">学年</th>
+          <td class="detail-value"><%= @material.grade.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">教科</th>
+          <td class="detail-value"><%= @material.subject.name %></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="option">
+      <div class="favorite-btn">
+        <%= image_tag "card.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+        <span>お気に入り 0</span>
+      </div>
+      <div class="report-btn">
+        <%= image_tag "card.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
+        <span>不適切な教材の通報</span>
+      </div>
+    </div>
+  </div>
+  <%# /商品の概要 %>
+
+  <div class="comment-box">
+    <form>
+      <textarea class="comment-text"></textarea>
+      <p class="comment-warn">
+        相手のことを考え丁寧なコメントを心がけましょう。
+        <br>
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      </p>
+      <button type="submit" class="comment-btn">
+        <%= image_tag "card.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <span>コメントする<span>
+      </button>
+    </form>
+  </div>
+  <div class="links">
+    <a href="#" class="change-item-btn">
+      ＜ 前の教材
+    </a>
+    <a href="#" class="change-item-btn">
+      後ろの教材 ＞
+    </a>
+  </div>
+  <a href="#" class="another-item"><%= @material.school_category.name %>をもっと見る</a>
+</div>
+
+<%= link_to "戻る", :back %>
+
+<%= render "shared/footer" %>

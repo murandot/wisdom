@@ -1,10 +1,21 @@
-<h2>ユーザー編集 <%#<%= resource_name.to_s.humanize %></h2>
-
+<%= render "shared/header"%>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h1 class='form-header-text'>
+      ユーザー編集
+    </h1>
+  </div>
+
+<%#= render "shared/error_messages", model: f.object %>
+
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">メールアドレス</label>
+      <span class="indispensable">必須</span>
+    </div>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
@@ -12,8 +23,11 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">新しいパスワード</label><i>（更新したい場合）</i>
+      <span class="indispensable">必須</span>
+    </div>
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
@@ -21,23 +35,65 @@
     <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">新しいパスワード（確認用）</label><i>（更新したい場合）</i>
+      <span class="indispensable">必須</span>
+    </div>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">現在のパスワード</label><i>（変更にはパスワードが必要です）</i>
+      <span class="indispensable">必須</span>
+    </div>
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+    <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">学校</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.collection_select(:school_category_id, SchoolCategory.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+  </div>
+      
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">教科</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.collection_select(:subject_id, Subject.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+  </div>
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">学年</label>
+      <span class="indispensable">任意</span>
+    </div>
+    <%= f.collection_select(:grade_id, Grade.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+  </div>
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">部活動</label>
+      <span class="indispensable">任意</span>
+    </div>
+    <%= f.collection_select(:club_id, Club.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+  </div>
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">分掌</label>
+      <span class="indispensable">任意</span>
+    </div>
+    <%= f.collection_select(:duty_id, Duty.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+  </div>
+  <br>
+  <div class='register-btn'>
+    <%= f.submit "更新", class:"register-red-btn" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<%= link_to "戻る", :back %>

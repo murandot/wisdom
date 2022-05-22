@@ -28,7 +28,13 @@ class User < ApplicationRecord
   belongs_to :duty
 
   validates :nickname, presence: true, length: { maximum: 40 }
+
+  with_options format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i } do
+    validates :password
+    validates :password_confirmation
+  end
+
   validates :school_category_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :subject_id, numericality: { other_than: 1, message: "can't be blank" }
 
-end
+end   

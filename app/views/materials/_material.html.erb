@@ -1,0 +1,31 @@
+      <%# 教材 %>
+      <div class="inner">
+        <h1 class="page-heading">教材一覧</h1>
+        <div class="card__wrapper">
+          <% @materials.each do |material| %>
+          <div class="card">
+            <%= image_tag 'card.png', class: 'card__img' %>
+            <div class="card__body">
+              <h2 class="card__title">
+                <%= link_to material.title, material_path(material.id)%>
+              </h2>
+              <div class="material-school-category">
+                <%= material.school_category.name %>
+              </div>
+              <div class="material-grade">
+                <%= material.grade.name %>年
+              </div>
+              <div class="material-subject">
+                <%= material.subject.name %>
+              </div>
+              <div class="material-subject">
+                タグ　タグ　タグ　タグ　タグ
+              </div>
+              <div class="material-user">
+                <%= link_to material.user.nickname, user_path(material.user) %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>

@@ -21,6 +21,28 @@ class MaterialsController < ApplicationController
   def show
     @material = Material.find(params[:id])
   end
+
+  def edit
+    @material = Material.find(params[:id])
+    unless @material.user == current_user
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @material = Material.find(params[:id])
+    if @material.update(material_params)
+      redirect_to action: :show
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @material = Material.find(params[:id])
+    @material.destroy
+    redirect_to homes_path
+  end
      
   private
   

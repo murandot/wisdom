@@ -38,8 +38,7 @@
         <%= "#{@user.nickname}さんの教材"%>
       </h2>
       <div class="user__card">
-        <%# 部分テンプレートでそのユーザーが投稿したプロトタイプ投稿一覧を表示する %>
-        <%#= render partial: 'materials/material', collection: @user.materials %>
+        <%= render partial: 'materials/material', locals: {materials: @user.materials} %>
       </div>
     </div>
   </div>

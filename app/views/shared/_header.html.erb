@@ -6,11 +6,12 @@
     <div class='nav'>
       <ul class='lists-left'>
         <li><%= link_to 'wisdom', homes_path, class: "home" %></li>
+        <li><%= link_to '教材を見る', materials_path, class: "watch" %></li>
         <li><%= link_to '記事を見る', "#", class: "watch" %></li>
         <li><%= link_to '相談を見る', "#", class: "watch" %></li>
       </ul>
       <ul class='lists-right'>
-        <li><%= link_to '作る', "#", class: "upload-btn" %></li>
+        <li><%= link_to '作る', new_material_path, class: "upload-btn" %></li>
         <li>
           <%= link_to root_path, class: "chat-icon" do %> <%# 後でパスの変更%>
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-chat" viewBox="0 0 16 16">

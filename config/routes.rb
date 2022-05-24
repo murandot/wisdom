@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :welcomes, only: :index
   resources :homes, only: :index
   resources :users, only: :show
-  resources :materials
+  resources :materials do
+    member do
+      get :download
+    end
+  end
 
 end

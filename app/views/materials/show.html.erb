@@ -9,6 +9,11 @@
     <div class="item-img-content">
       <%= image_tag 'card.png', class: 'card__img' %>
     </div>
+    
+    <div class="material-data">
+      <%= @material[:data] %>
+      <%= link_to "ダウンロード", download_material_path(@material) %>
+    </div>
 
     <% if current_user == @material.user %>
       <%= link_to "編集", edit_material_path(@material), method: :get, class: "item-red-btn" %>  

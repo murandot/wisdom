@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  mount_uploader :avatar, AvatarUploader
+
   has_many :materials
 #  has_many :articles
 #  has_many :questions
@@ -28,13 +30,27 @@ class User < ApplicationRecord
   belongs_to :duty
 
   validates :nickname, presence: true, length: { maximum: 40 }
-
-  with_options format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i } do
-    validates :password
-    validates :password_confirmation
-  end
-
   validates :school_category_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :subject_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :avatar, presence: true
+
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
+  validates :password, format: { with: VALID_PASSWORD_REGEX }, on: :create
+  validates :password, format: { with: VALID_PASSWORD_REGEX }, allow_blank: true, on: :update
+  validates :password_confirmation, format: { with: VALID_PASSWORD_REGEX }, on: :create
+  validates :password_confirmation, format: { with: VALID_PASSWORD_REGEX }, allow_blank: true, on: :update
+
+  def update_without_current_password(params, *options)
+    params.delete(:current_password)
+ 
+    if params[:password].blank? && params[:password_confirmation].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation)
+    end
+ 
+    result = update_attributes(params, *options)
+    clean_up_passwords
+    result
+  end
 
 end   

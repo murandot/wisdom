@@ -6,6 +6,14 @@
       <h2 class="page-heading">
         <%= "#{@user.nickname}さんの情報"%>
       </h2>
+
+      <% if current_user == @user %>
+        <%= link_to "編集", edit_user_registration_path(@user), method: :get, class: "item-red-btn" %>
+        <%= link_to "削除", user_registration_path(@user), method: :delete, class:"item-destroy" %>
+      <% end %>
+      <br>
+      <%= image_tag @user.avatar.url, class:'avatar' %>
+      <br>
       <table class="table">
         <tbody>
           <tr>

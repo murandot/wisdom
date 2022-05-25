@@ -9,7 +9,7 @@
     <div class="item-img-content">
       <%= image_tag 'card.png', class: 'card__img' %>
     </div>
-    
+
     <div class="material-data">
       <%= @material[:data] %>
       <%= link_to "ダウンロード", download_material_path(@material) %>
@@ -20,6 +20,8 @@
       <p class="or-text">or</p>
       <%= link_to "削除", material_path(@material), method: :delete, class:"item-destroy" %>
     <% end %>
+
+    <%= image_tag @material.user.avatar.url, class: 'avatar' %>
 
     <div class="item-explain-box">
       <span><%= @material.content %></span>

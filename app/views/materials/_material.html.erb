@@ -22,6 +22,7 @@
                 タグ　タグ　タグ　タグ　タグ
               </div>
               <div class="material-user">
+                <%= image_tag material.user.avatar_url(:thumb), class:'avatar' %>
                 <%= link_to material.user.nickname, user_path(material.user) %>
               </div>
             </div>

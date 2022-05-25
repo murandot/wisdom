@@ -11,6 +11,14 @@
 
   <div class="form-group">
     <div class='form-text-wrap'>
+      <label class="form-text">プロフィール画像</label>
+      <span class="indispensable">任意</span>
+    </div>
+    <%= f.file_field :avatar, id:"avatar" %>
+  </div>
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
       <label class="form-text">ユーザー名</label>
       <span class="indispensable">必須</span>
     </div>
@@ -82,18 +90,10 @@
     <%= f.collection_select(:duty_id, Duty.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
   </div>
 
-
-  <div class="form-group">
-    <h2 class='form-bottom-text'>
-      「登録」のボタンを押すことにより、
-      <span>利用規約</span>
-      <br>に同意したものとみなします
-    </h2>
-  </div>
   <div class='register-btn'>
     <%= f.submit "ユーザー登録" ,class:"register-red-btn" %>
   </div>
-  <p class='register-info'>本人情報の登録について</p>
+
 </div>
 <% end %>
 <%= render "shared/footer"%>

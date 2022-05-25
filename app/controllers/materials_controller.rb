@@ -1,8 +1,10 @@
 class MaterialsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_material, except: [:index, :new, :create]
 
   def index
     @materials = Material.all.order('created_at DESC')
+
   end
 
   def new
@@ -19,18 +21,15 @@ class MaterialsController < ApplicationController
   end
 
   def show
-    @material = Material.find(params[:id])
   end
 
   def edit
-    @material = Material.find(params[:id])
     unless @material.user == current_user
       redirect_to root_path
     end
   end
 
   def update
-    @material = Material.find(params[:id])
     if @material.update(material_params)
       redirect_to action: :show
     else
@@ -39,13 +38,11 @@ class MaterialsController < ApplicationController
   end
 
   def destroy
-    @material = Material.find(params[:id])
     @material.destroy
     redirect_to homes_path
   end
 
   def download
-    @material = Material.find(params[:id])
     filepath = @material.data.current_path
     stat = File::stat(filepath)
     send_file(filepath, :filename => @material.data_identifier, :length => stat.size)
@@ -57,4 +54,8 @@ class MaterialsController < ApplicationController
     params.require(:material).permit(:title, :content, :school_category_id, :subject_id, :grade_id, :data).merge(user_id: current_user.id)
   end
   
+  def set_material
+    @material = Material.find(params[:id])
+  end
+
 end

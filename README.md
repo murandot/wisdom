@@ -61,11 +61,12 @@ Things you may want to cover:
 | Column             | Type       | Option                         |
 | ------------------ | ---------- | ------------------------------ |
 | title              | string     | null: false                    |
-| content            | string     | null: false                    |
+| content            | text       | null: false                    |
 | school_category_id | integer    | null: false                    |
 | subject_id         | integer    | null: false                    |
 | grade_id           | integer    |                                |
 | user               | references | null: false, foreign_key: true |
+| data               | string     | null: false                    |
 
 ### Association
 - belongs_to :user
@@ -80,8 +81,11 @@ Things you may want to cover:
 | Column             | Type       | Option                         |
 | ------------------ | ---------- | ------------------------------ |
 | title              | string     | null: false                    |
-| content            | string     | null: false                    |
+| content            | text       | null: false                    |
 | user               | references | null: false, foreign_key: true |
+| grade_id           | integer    | null: false                    |
+| school_category_id | integer    |                                |
+| image              | string     |                                |
 
 ### Association
 - belongs_to :user
@@ -96,8 +100,10 @@ Things you may want to cover:
 | Column             | Type       | Option                         |
 | ------------------ | ---------- | ------------------------------ |
 | title              | string     | null: false                    |
-| content            | string     | null: false                    |
+| content            | text       | null: false                    |
 | user               | references | null: false, foreign_key: true |
+| grade_id           | integer    | null: false                    |
+| school_category_id | integer    |                                |
 
 ### Association
 - belongs_to :user
@@ -123,7 +129,7 @@ Things you may want to cover:
 ## comments テーブル
 | Column             | Type       | Option                         |
 | ------------------ | ---------- | ------------------------------ |
-| content            | string     | null: false                    |
+| content            | text       | null: false                    |
 | user               | references | null: false, foreign_key: true |
 | articles           | references | null: false, foreign_key: true |
 
@@ -136,7 +142,7 @@ Things you may want to cover:
 ## answers テーブル
 | Column             | Type       | Option                         |
 | ------------------ | ---------- | ------------------------------ |
-| content            | string     | null: false                    |
+| content            | text       | null: false                    |
 | user               | references | null: false, foreign_key: true |
 | question           | references | null: false, foreign_key: true |
 

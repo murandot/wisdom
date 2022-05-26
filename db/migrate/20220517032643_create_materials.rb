@@ -7,7 +7,7 @@ class CreateMaterials < ActiveRecord::Migration[6.0]
       t.integer    :subject_id,         null: false
       t.integer    :grade_id,           null: false
       t.references :user,               null: false
-      t.string     :data,               
+      t.string     :data,               null: false               
       t.timestamps
     end
   end

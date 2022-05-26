@@ -1,0 +1,87 @@
+<%= render "shared/header" %>
+
+<%# 記事の概要 %>
+<div class="item-show">
+  <div class="item-box">
+    <h2 class="name">
+      <%= @article.title %>
+    </h2>
+    <div class="item-img-content">
+      <%= image_tag @article.image.url, class: 'card__img' %>
+    </div>
+
+    <% if current_user == @article.user %>
+      <%= link_to "編集", edit_article_path(@article), method: :get, class: "item-red-btn" %>  
+      <p class="or-text">or</p>
+      <%= link_to "削除", article_path(@article), method: :delete, class:"item-destroy" %>
+    <% end %>
+
+
+
+    <div class="article-detail">
+      <%# 記事の投稿者 %>
+      <div class="article-user">
+        投稿者：
+        <%= link_to @article.user.nickname, user_path(@article.user) %>
+        <%= image_tag @article.user.avatar.url, class: 'avatar' %>
+      </div>
+      <%# 記事のジャンル%>
+      <div class="article-genre">
+        ジャンル：
+        <%= @article.genre.name %>
+      </div>
+      <%# 記事の学校種%>
+      <div class="article-genre">
+        学校種：
+        <%= @article.school_category.name %>
+      </div>
+    </div>
+
+    <%# 記事の内容%>
+    <div class="item-explain-box">
+      内容：
+      <span><%= @article.content %></span>
+    </div>
+    
+    <%# いいね欄 %>
+    <div class="option">
+      <div class="favorite-btn">
+        <%= image_tag "card.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+        <span>お気に入り 0</span>
+      </div>
+      <div class="report-btn">
+        <%= image_tag "card.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
+        <span>不適切な教材の通報</span>
+      </div>
+    </div>
+  </div>
+
+  <%# コメント欄 %>
+  <div class="comment-box">
+    <form>
+      <textarea class="comment-text"></textarea>
+      <p class="comment-warn">
+        相手のことを考え丁寧なコメントを心がけましょう。
+        <br>
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      </p>
+      <button type="submit" class="comment-btn">
+        <%= image_tag "card.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <span>コメントする<span>
+      </button>
+    </form>
+  </div>
+  <div class="links">
+    <a href="#" class="change-item-btn">
+      ＜ 前の記事
+    </a>
+    <a href="#" class="change-item-btn">
+      後ろの記事 ＞
+    </a>
+  </div>
+  <a href="#" class="another-item"><%= @article.genre.name %>をもっと見る</a>
+</div>
+
+<%= link_to "戻る", :back %>
+
+<%= render "shared/footer" %>

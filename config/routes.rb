@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  
   root to: 'welcomes#index'
+  
   resources :welcomes, only: :index
   resources :homes, only: :index
   resources :users, only: :show
@@ -12,5 +14,6 @@ Rails.application.routes.draw do
       get :download
     end
   end
+  resources :articles
 
 end

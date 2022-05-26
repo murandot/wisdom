@@ -21,8 +21,6 @@
       <%= link_to "削除", material_path(@material), method: :delete, class:"item-destroy" %>
     <% end %>
 
-    <%= image_tag @material.user.avatar.url, class: 'avatar' %>
-
     <div class="item-explain-box">
       <span><%= @material.content %></span>
     </div>
@@ -31,6 +29,7 @@
         <tr>
           <th class="detail-item">投稿者</th>
           <td class="detail-value"><%= link_to @material.user.nickname, user_path(@material.user) %></td>
+          <%= image_tag @material.user.avatar.url, class: 'avatar' %>
         </tr>
         <tr>
           <th class="detail-item">学校</th>

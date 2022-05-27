@@ -1,0 +1,43 @@
+<%= form_with model: @question, local: true do |f| %>
+<%#= render 'shared/error_messages', model: f.object %>
+
+  <div class="new-items">
+    <%# 相談のタイトル %>
+    <div class="weight-bold-text">
+      相談のタイトル
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_area :title, class:"items-text", id:"item-name", placeholder:"相談のタイトル" %>
+    <%# 相談の内容 %>
+    <div class="items-explain">
+      <div class="weight-bold-text">
+        相談の内容
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :content, class:"items-text", id:"item-info", placeholder:"相談の内容" %>
+    </div>
+  </div>
+
+  <%# 相談のカテゴリー %>
+  <div class="items-detail">
+    <div class="weight-bold-text">相談のカテゴリー</div>
+    <div class="form">
+      <div class="weight-bold-text">
+        ジャンル
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+      <div class="weight-bold-text">
+        学校種
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.collection_select(:school_category_id, SchoolCategory.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
+  </div>
+
+  <%# 下部ボタン %>
+  <div class="sell-btn-contents">
+    <%= f.submit "投稿する",class:"sell-btn" %>
+    <%=link_to 'もどる', root_path, class:"back-btn" %>
+  </div>
+  
+<% end %>

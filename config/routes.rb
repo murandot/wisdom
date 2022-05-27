@@ -3,7 +3,6 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-  
   root to: 'welcomes#index'
   
   resources :welcomes, only: :index
@@ -15,7 +14,9 @@ Rails.application.routes.draw do
     end
     resources :feedbacks, only: :create
   end
-  resources :articles
+  resources :articles do
+    resources :comments, only: :create
+  end 
   resources :questions
 
 end

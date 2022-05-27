@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
   belongs_to :user
-  #has_many :comments
+  has_many :comments
   #has_many :article_favorites
   #has_many :article_tags, through: article_taggings
   #has_many :article_taggings

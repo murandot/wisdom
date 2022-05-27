@@ -1,6 +1,6 @@
 class Question < ApplicationRecord
   belongs_to :user
-  #has_many :answers
+  has_many :answers
   #has_many :queation_tags, through: question_taggings
   #has_many :question_taggings
   

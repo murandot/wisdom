@@ -51,21 +51,35 @@
     </div>
   </div>
 
-  <%# コメント欄 %>
-  <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
-      <p class="comment-warn">
-        相手のことを考え丁寧なコメントを心がけましょう。
-        <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
-      <button type="submit" class="comment-btn">
-        <%= image_tag "card.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
-      </button>
-    </form>
+  <%# 回答欄 %>
+  <div class="answer-box">
+    <div class="answer-form">
+      <%# 回答投稿フォーム %>        
+      <% if user_signed_in? %>
+        <%= form_with(model: [@question,@answer],local: true) do |f|%>
+          <div class="field">
+            <%= f.label :content, "回答する" %><br />
+            <%= f.text_field :content, id:"answer_content" %>
+          </div>
+          <div class="actions">
+            <%= f.submit "送信する", class: :form__btn  %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <%# 回答一覧表示 %>
+    <br>
+    <h2>回答</h2>
+    <ul class="answer_lists">
+      <% @answers.each do |answer| %>
+        <li class="answer_list">
+          <%= answer.content %>
+          <%= link_to answer.user.nickname, user_path(answer.user), class: :answer_user %>
+      </li>
+      <% end %>
+    </ul>
   </div>
+
   <div class="links">
     <a href="#" class="change-item-btn">
       ＜ 前の質問

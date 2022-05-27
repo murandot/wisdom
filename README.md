@@ -116,7 +116,7 @@ Things you may want to cover:
 ## feedbacks テーブル
 | Column             | Type       | Option                         |
 | ------------------ | ---------- | ------------------------------ |
-| content            | string     | null: false                    |
+| content            | text       | null: false                    |
 | user               | references | null: false, foreign_key: true |
 | material           | references | null: false, foreign_key: true |
 

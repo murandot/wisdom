@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     member do
       get :download
     end
+    resources :feedbacks, only: :create
   end
   resources :articles
   resources :questions

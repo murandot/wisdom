@@ -21,6 +21,8 @@ class MaterialsController < ApplicationController
   end
 
   def show
+    @feedback = Feedback.new
+    @feedbacks = @material.feedbacks
   end
 
   def edit

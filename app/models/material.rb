@@ -1,6 +1,6 @@
 class Material < ApplicationRecord
   belongs_to :user
-#  has_many :feedbacks
+  has_many :feedbacks
 #  has_many :material_favorites
 #  has_many :material_tags, through: material_taggings
 #  has_many :material_taggings

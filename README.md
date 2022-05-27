@@ -101,9 +101,9 @@ Things you may want to cover:
 | ------------------ | ---------- | ------------------------------ |
 | title              | string     | null: false                    |
 | content            | text       | null: false                    |
-| user               | references | null: false, foreign_key: true |
 | grade_id           | integer    | null: false                    |
 | school_category_id | integer    |                                |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user

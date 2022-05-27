@@ -1,0 +1,82 @@
+<%= render "shared/header" %>
+
+<%# 相談の概要 %>
+<div class="item-show">
+  <div class="item-box">
+    <h2 class="name">
+      <%= @question.title %>
+    </h2>
+
+    <% if current_user == @question.user %>
+      <%= link_to "編集", edit_question_path(@question), method: :get, class: "item-red-btn" %>  
+      <p class="or-text">or</p>
+      <%= link_to "削除", question_path(@question), method: :delete, class:"item-destroy" %>
+    <% end %>
+
+    <div class="question-detail">
+      <%# 相談の投稿者 %>
+      <div class="question-user">
+        投稿者：
+        <%= link_to @question.user.nickname, user_path(@question.user) %>
+        <%= image_tag @question.user.avatar.url, class: 'avatar' %>
+      </div>
+      <%# 相談のジャンル%>
+      <div class="question-genre">
+        ジャンル：
+        <%= @question.genre.name %>
+      </div>
+      <%# 相談の学校種%>
+      <div class="question-genre">
+        学校種：
+        <%= @question.school_category.name %>
+      </div>
+    </div>
+
+    <%# 相談の内容%>
+    <div class="item-explain-box">
+      内容：
+      <span><%= @question.content %></span>
+    </div>
+    
+    <%# いいね欄 %>
+    <div class="option">
+      <div class="favorite-btn">
+        <%= image_tag "card.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+        <span>お気に入り 0</span>
+      </div>
+      <div class="report-btn">
+        <%= image_tag "card.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
+        <span>不適切な教材の通報</span>
+      </div>
+    </div>
+  </div>
+
+  <%# コメント欄 %>
+  <div class="comment-box">
+    <form>
+      <textarea class="comment-text"></textarea>
+      <p class="comment-warn">
+        相手のことを考え丁寧なコメントを心がけましょう。
+        <br>
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      </p>
+      <button type="submit" class="comment-btn">
+        <%= image_tag "card.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <span>コメントする<span>
+      </button>
+    </form>
+  </div>
+  <div class="links">
+    <a href="#" class="change-item-btn">
+      ＜ 前の質問
+    </a>
+    <a href="#" class="change-item-btn">
+      後ろの質問 ＞
+    </a>
+  </div>
+  <a href="#" class="another-item"><%= @question.genre.name %>をもっと見る</a>
+</div>
+
+<%= link_to "戻る", :back %>
+
+<%= render "shared/footer" %>

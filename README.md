@@ -260,8 +260,7 @@ Things you may want to cover:
 | Column             | Type       | Option                         |
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
-| member             | references | null: false, foreign_key: true |
-| message            | references | null: false, foreign_key: true |
+
 
 ### Association
 - has_many :users, through: :members

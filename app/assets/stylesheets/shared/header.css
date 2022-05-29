@@ -1,11 +1,11 @@
 /*** header ***/
-.top-page-header{
+.home-page-header{
   height: 145px;
   width: 1440px;
   box-shadow: 0  2px 2px 0 rgba(0, 0, 0, .5);
 }
 
-/*** navi-bar ***/
+/*** nav-bar ***/
 .nav-bar-contents{
   height: 70px;
   width: 100%;

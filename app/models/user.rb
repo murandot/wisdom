@@ -7,20 +7,20 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_many :materials
-#  has_many :articles
-#  has_many :questions
-#  has_many :feedbacks
-#  has_many :comments
-#  has_many :answers
+  has_many :articles
+  has_many :questions
+  has_many :feedbacks
+  has_many :comments
+  has_many :answers
 #  has_many :material_favorites
 #  has_many :article_favorites
 #  has_many :relationships
 #  has_many :followings, through: :relationships, source: :follow
 #  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
 #  has_many :followers, through: :reverse_of_relationships, source: :user
-#  has_many :rooms, through: :rooms
-#  has_many :members
-#  has_many :messages
+  has_many :members
+  has_many :rooms, through: :members
+  has_many :messages
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :school_category

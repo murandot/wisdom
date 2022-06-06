@@ -1,0 +1,74 @@
+.article-cards {
+  height: 100%;
+  width: 100vw;
+  padding: 40 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.article-card-wrapper {
+  height: 100%;
+  width: 692px;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-card {
+  width: 100%;
+  border-top: 1px solid #888888;
+  margin-bottom: 40px;
+  padding: 16px;
+}
+
+.article-card-image {
+  height: 210px;
+  width: 100%;
+  position: relative;
+}
+
+.article-card-category {
+  height: 22px;
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.article-card-genre {
+
+}
+
+.article-school-category {
+
+}
+
+.article-card-tag {
+
+}
+
+.article-card-title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  margin-top: 16px;
+}
+
+.article-card-content {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  margin-top: 8px;
+}
+
+.article-card-user-contents {
+  height: 32px;
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.article-card-user-nickname {
+  line-height: 32px;
+}

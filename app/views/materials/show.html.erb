@@ -1,102 +1,139 @@
 <%= render "shared/header" %>
+  
+<div class="content-main">
 
-<%# 教材の概要 %>
-<div class="item-show">
-  <div class="item-box">
-    <h2 class="name">
-      <%= @material.title %>
-    </h2>
-    <div class="item-img-content">
-      <%= image_tag 'card.png', class: 'card__img' %>
+  <div class="top-contents">
+    <div class="user-contents">
+      <%= image_tag @material.user.avatar.thumb64.url, class:'avatar' %>
+      <div class="user-nickname">
+        <%= link_to @material.user.nickname, user_path(@material.user), class: 'black2 text link' %>
+      </div>
+      <div class="follow-btn">
+        フォロー
+      </div>
     </div>
-
-    <div class="material-data">
-      <%= @material[:data] %>
-      <%= link_to "ダウンロード", download_material_path(@material) %>
+    <div class="info-contents">
+      <div class="info-content">
+        <div class="info-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+          </svg>
+        </div>
+        <div class="info-count gray text">
+          1000<%#= @material.accsess.count %>
+        </div>
+      </div>
+      <div class="info-content">
+        <div class="info-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+           <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+          </svg>
+        </div>
+        <div class="info-count gray text">
+          1000<%#= @material.accsess.count %>
+        </div>
+      </div>
+      <div class="info-content">
+        <div class="info-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#888888" class="bi bi-heart-fill" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+          </svg>
+        </div>
+        <div class="info-count gray text">
+          1000<%#= @material.accsess.count %>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <% if current_user == @material.user %>
-      <%= link_to "編集", edit_material_path(@material), method: :get, class: "item-red-btn" %>  
-      <p class="or-text">or</p>
-      <%= link_to "削除", material_path(@material), method: :delete, class:"item-destroy" %>
+  <div class="image">
+    <%= image_tag 'card.png', class: 'image' %>
+    <div class="favorite-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="tag-s">
+        <%= @material.school_category.name %>
+    </div>
+    <div class="tag-s">
+        <%= @material.grade.name %>年
+    </div>   
+    <div class="tag-s">
+        <%= @material.subject.name %>
+    </div>
+    <div class="tag-s">
+        <span>タグ</span>
+    </div>
+  </div>
+
+  <div class="title ttl black1">
+    <%= @material.title %>
+  </div>
+
+  <div class="content txt black2">
+      <%= @material.content %>
+  </div>
+  
+  
+  <div class="download">
+    <%= link_to download_material_path(@material), class: 'download-icon' do %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#73D80E" class="bi bi-download" viewBox="0 0 16 16">
+        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+      </svg>
     <% end %>
-
-    <div class="item-explain-box">
-      <span><%= @material.content %></span>
-    </div>
-    <table class="detail-table">
-      <tbody>
-        <tr>
-          <th class="detail-item">投稿者</th>
-          <td class="detail-value"><%= link_to @material.user.nickname, user_path(@material.user) %></td>
-          <%= image_tag @material.user.avatar.url, class: 'avatar' %>
-        </tr>
-        <tr>
-          <th class="detail-item">学校</th>
-          <td class="detail-value"><%= @material.school_category.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">学年</th>
-          <td class="detail-value"><%= @material.grade.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">教科</th>
-          <td class="detail-value"><%= @material.subject.name %></td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="option">
-      <div class="favorite-btn">
-        <%= image_tag "card.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
-      </div>
-      <div class="report-btn">
-        <%= image_tag "card.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
-        <span>不適切な教材の通報</span>
-      </div>
-    </div>
+    <%= link_to @material[:data], download_material_path(@material), class: 'data link' %>
   </div>
 
-  <%# フィードバック欄 %>
-  <div class="feedback-box">
-    <div class="feedback-form">
-      <%# フェードバック投稿フォーム %>        
-      <% if user_signed_in? %>
-        <%= form_with(model: [@material,@feedback],local: true) do |f|%>
-          <div class="field">
-            <%= f.label :content, "コメントする" %><br />
-            <%= f.text_field :content, id:"feedback_content" %>
-          </div>
-          <div class="actions">
-            <%= f.submit "送信する", class: :form__btn  %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-    <%# フィードバック一覧表示 %>
-    <br>
-    <h2>フィードバック</h2>
-    <ul class="feedbacks_lists">
-      <% @feedbacks.each do |feedback| %>
-        <li class="feedback_list">
-          <%= feedback.content %>
-          <%= link_to feedback.user.nickname, user_path(feedback.user), class: :feedback_user %>
-      </li>
-      <% end %>
-    </ul>
-  </div>
+  <br>
+  <br>
 
-  <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の教材
-    </a>
-    <a href="#" class="change-item-btn">
-      後ろの教材 ＞
-    </a>
+  <% if current_user == @material.user %>
+    <div class="edit">
+      <%= link_to "編集する", edit_material_path(@material), method: :get, class: "edit-btn link" %>  
+    </div>
+  <% end %>
+
+  <br>
+  <br>
+
   </div>
-  <a href="#" class="another-item"><%= @material.school_category.name %>をもっと見る</a>
 </div>
 
-<%= link_to "戻る", :back %>
+<div class="comment-box">
+  <%# フェードバック投稿フォーム %>        
+  <%= form_with model: [@material,@feedback], class: 'comment-form',local: true do |f|%>
+    <div class="comment-input">
+      <%= f.text_field :content, class: 'comment-input-field', placeholder: 'コメントを入力する', id:"feedback_content" %>
+    </div>
+    <div class="comment-submit">
+      <%= f.submit "送信する", class: 'comment-submit-btn'  %>
+    </div>
+  <% end %>
+    
+  <%# フィードバック一覧表示 %>
+  <div class="comments">
+    <div class="comment-header">
+      この教材へのコメント
+    </div>
+    <% @feedbacks.each do |feedback| %>
+      <div class="comment">
+        <div class="comment-user-contents">
+          <%= image_tag feedback.user.avatar.thumb56.url, class:'avatar' %>
+          <%= link_to feedback.user.nickname, user_path(feedback.user), class: 'comment_user txt black2 link' %>
+        </div>
+      <div class="comment-content txt black2">
+        <%= feedback.content %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
 
 <%= render "shared/footer" %>

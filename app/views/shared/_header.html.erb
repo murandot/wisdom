@@ -11,7 +11,7 @@
         <li><%= link_to '相談を見る', questions_path, class: "watch" %></li>
       </ul>
       <ul class='lists-right'>
-        <li><%= link_to '作る', new_material_path, class: "upload-btn" %></li>
+        <li><%= link_to '投稿する', new_material_path, class: "upload-btn" %></li>
         <%# チャット %>
         <li>
           <%= link_to rooms_path, class: "chat-icon" do %>
@@ -28,7 +28,11 @@
             </svg>
           <% end %>
         </li>
-        <%= link_to image_tag("user.png", class:"user-icon"), user_path(current_user) %>
+        <li>
+          <%= link_to user_path(current_user) do %>
+            <%= image_tag current_user.avatar.thumb48.url, class:'avatar' %>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>

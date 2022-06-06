@@ -1,0 +1,215 @@
+/*** 共通 ***/
+
+.content-main {
+  height: 100%;
+  padding: 0 180px;
+  display: block;
+  flex-direction: column;
+  margin: 40px auto;
+}
+
+/*** 詳細ページのトップコンテンツ ***/
+.top-contents{
+  height: 64px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+/* ユーザーの写真・名前 */
+.user-contents {
+  height: 64px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-nickname {
+  line-height: 64px;
+  margin-right: 16px;
+}
+
+/* 閲覧・ダウンロード・いいね数のカウント */
+.info-contents {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.info-content {
+  width: 56px;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.info-icon {
+  height: 20px;
+  width: 100%;
+  text-align: center;
+  line-height: 20px;
+}
+
+.bi-eye {
+  height: 20px;
+  width: 20px;
+  color: #888888;
+}
+
+.bi-download {
+  height: 20px;
+  width: 20px;
+  color: #888888;
+}
+
+.info-count {
+  height: 20px;
+  width: 100%;
+  text-align: center;
+  line-height: 20px;
+  margin-top: 8px;
+}
+
+/* イメージ画像表示 */
+
+.image {
+  height: 350px;
+  width: 100%;
+  position: relative;
+  object-fit: cover;
+}
+
+/* タグ表示 */
+
+.category {
+  height: 26px;
+  display: flex;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+/* タイトル・本文 */
+
+.title {
+  height: fit-content;
+  margin-top: 16px;
+}
+
+.content {
+  height: fit-content;
+  margin-top: 16px;
+}
+
+
+/*** 教材のみ ***/
+.download {
+  height: 20px;
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.download-icon {
+  line-height: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.data {
+  color: #73D80E;
+  line-height: 20px;
+}
+
+.edit-btn {
+  width: 100%;
+  color: #FFFFFF;
+  background-color: #888888;
+  padding: 10px;
+  margin-top: 32px;
+  border-radius: 10px;
+}
+
+
+/*** コメント欄（フィードバック） ***/
+.comment-box {
+  height: 100%;
+  padding: 0 180px;
+  display: block;
+  flex-direction: column;
+  margin: 40px auto;
+}
+
+/* コメント入力・送信 */
+.comment-form{
+  height: 56px;
+  background-color: #DDDDDD;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.comment-input{
+  background-color: white;
+  width: 100%;
+  display: flex;
+  border-radius: 10px;
+}
+
+.comment-input-field{
+  height: 36px;
+  width: 100%;
+  padding-left: 10px;
+  border-radius: 10px;
+  border-style: none;
+}
+
+.comment-submit-btn{
+  width: 100px;
+  background-color: #73D80E;
+  border: none;
+  color: #FFFFFF;
+  font-size: 16px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* コメント一覧表示 */
+.comments {
+  width: 100%;
+}
+
+.comment-header{
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  margin: 32px 0 16px;
+
+}
+
+.comment {
+  border-top: 1px solid #888888;
+  padding-top: 16px;
+  margin-bottom: 32px;
+}
+
+.comment-user-contents{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.comment_user{
+  
+}
+
+.comment-content{
+margin-top: 16px;
+}

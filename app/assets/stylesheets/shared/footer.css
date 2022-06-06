@@ -4,9 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid #000000;
-  border-bottom: 1px solid #000000;
-  background: linear-gradient(90deg, #2ED513 0%, #CEE63B 68.36%, #C5F068 100%);
+  border-top: 1px solid #292929;
+  border-bottom: 1px solid #292929;
+  background: #73D80E;
 }
 
 .apprication-name{

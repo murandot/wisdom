@@ -1,0 +1,185 @@
+/*** フォントサイズ ***/
+
+.page-heading {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 40px auto 32px;
+}
+
+.page-heading-s {
+  font-size: 30px;
+  margin: 40px auto 30px;
+}
+
+.ttl {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.ttl-s {
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.txt{
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.txt-s{
+  font-size: 12px;
+  line-height: 12px;
+}
+
+/*** フォントカラー ***/
+.black1 {
+  color: #292929;
+}
+
+.black2 {
+  color: #494949;
+}
+
+.gray {
+  color: #888888;
+}
+
+.white {
+  color: #FFFFFFFF;
+}
+
+.green {
+  color: #73D80E;
+}
+
+.link {
+  text-decoration: none;
+}
+
+/*** ユーザー画像 ***/
+.avatar {
+  border-radius: 50%;
+}
+
+/*** タグ ***/
+.tag-s {
+  font-size: 12px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 22px;
+  color: #73D80E;
+  border: 1px solid #73D80E;
+  border-radius: 30px;
+  padding: 5px;
+}
+
+.tag-m {
+  font-size: 16px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 36px;
+  color: #73D80E;
+  border: 1px solid #73D80E;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+/*** 各種ボタン ***/
+.btn {
+  padding: 10px;
+  background: #73D80E;
+  border-radius: 10px;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.edit {
+
+}
+
+.follow-btn {
+  height: 36px;
+  width: 86px;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 36px;
+  color: #2DC714;
+  border: 1px solid #2DC714;
+  border-radius: 30px;
+}
+
+.favorite-btn{
+  height: 32px;
+  width: 32px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  position: absolute; top:8px; right:8px;
+}
+
+/* いいねアイコン */
+.bi-heart{
+  height: 16px;
+  width: 16px;
+  color: #EA61A3;
+  position: absolute; top:9px; right:8px;
+}
+
+/* コメントアイコン */
+.bi-chat-square-text {
+  height: 20px;
+  width: 20px;
+  color: #888888;
+}
+
+
+
+/***** レスポンシブ対応 *****/
+
+/* タブレット表示時 */
+@media (max-width: 1024px) {
+  .inner {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .page-heading {
+    font-size: 24px;
+  }
+  .card {
+    width: 48%;
+    margin-bottom: 40px;
+  }
+  .card__title {
+    font-size: 20px;
+  }
+  .card__summary {
+    font-size: 16px;
+  }
+}
+
+/* スマホ表示時 */
+@media (max-width: 599px) {
+  .page-heading {
+    font-size: 20px;
+  }
+  .card {
+    width: 100%;
+    margin-bottom: 60px;
+  }
+  .card_title {
+    font-size: 18px;
+  }
+  .card__summary {
+    font-size: 14px;
+  }
+}

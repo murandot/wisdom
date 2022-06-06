@@ -1,8 +1,8 @@
 /*** header ***/
 .home-page-header{
   height: 145px;
-  width: 1440px;
-  box-shadow: 0  2px 2px 0 rgba(0, 0, 0, .5);
+  width: 100vw;
+  box-shadow: 0  2px 2px 0 #888888;
 }
 
 /*** nav-bar ***/
@@ -11,7 +11,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, .5);
+  border-bottom: 1px solid #888888;
 }
 .logo{
   width: 78px;
@@ -53,7 +53,7 @@
   font-weight: bold;
   font-size: 18px;
   line-height: 25px;
-  color: #000000;
+  color: #292929;
   text-decoration: none;
 }
 
@@ -61,11 +61,11 @@
   width: 90px;
   height: 25px;
   font-family: 'Noto Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
+  font-style: bold;
+  font-weight: 600;
+  font-size: 16px;
   line-height: 25px;
-  color: #000000;
+  color: #888888;
   text-decoration: none;
 
 }
@@ -87,7 +87,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(90deg, #2ED513 0%, #CEE63B 68.36%, #C5F068 100%);
+  background: #73D80E;
   border-radius: 10px;
   color: #FFFFFF;
   text-decoration: none;
@@ -122,8 +122,8 @@
   padding: 10px;
   background-color: #FFFFFF;
   border-radius: 10px;
-  border: 1px solid #000000;
-  color:  #000000;
+  border: 1px solid #494949;
+  color:  #494949;
   text-decoration: none;
 }
 
@@ -137,8 +137,8 @@
   padding: 10px;
   background-color: #FFFFFF;
   border-radius: 10px;
-  border: 1px solid #000000;
-  color:  #000000;
+  border: 1px solid #494949;
+  color:  #494949;
   text-decoration: none;
 }
 
@@ -147,11 +147,10 @@
   width: 46px;
   background-color: #FFFFFF;
   border-radius: 10px;
-  border: 1px solid #000000;
+  border: 1px solid #494949;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: 10px;
   padding: 0;
-
 }

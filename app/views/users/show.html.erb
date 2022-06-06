@@ -12,7 +12,9 @@
         <%= link_to "削除", user_registration_path(@user), method: :delete, class:"item-destroy" %>
       <% end %>
       <br>
-      <%= image_tag @user.avatar.url, class:'avatar' %>
+      <div class="user-avatar">
+        <%= image_tag @user.avatar.url, class:'avatar' %>
+      </div>
       <br>
       <table class="table">
         <tbody>

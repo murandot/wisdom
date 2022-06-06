@@ -1,64 +1,87 @@
+<% if request.path == new_material_path %>
+    <h2 class="page-heading">教材を投稿する</h2>
+<% else %>
+    <h2 class="page-heading">教材を編集する</h2>
+<% end %>
+
 <%= form_with model: @material, local: true do |f| %>
 <%#= render 'shared/error_messages', model: f.object %>
 
-  <%# 商品画像 %>
-  <div class="img-upload">
+  <!--- 教材のイメージ画像 --->
+  <div class="content-image-uploader">
     <div class="weight-bold-text">
-      商品画像
-      <span class="indispensable">必須</span>
+      教材のイメージ画像
+      <span class="dispensable">任意</span>
     </div>
     <div class="click-upload">
-      <p>
-        クリックしてファイルをアップロード
-      </p>
-      <%= f.file_field :data, id:"item-image" %>
+        <%#= f.label :image, "画像を選ぶ", class: "file-btn" %>
+        <%= f.file_field :image, class: "file-btn-hidden", id:"content-image" %>
     </div>
+    <%= image_tag 'card.png', class:'content-image' %> <!-- 後で画像のサムネイルに差し替え-->
   </div>
 
-  <%# 教材画像 %>
-
-  <%# 教材名と教材説明 %>
-  <div class="new-items">
-    <div class="weight-bold-text">
-      教材名
-      <span class="indispensable">必須</span>
-    </div>
-    <%= f.text_area :title, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)" ,rows:"2", maxlength:"40" %>
-    <div class="items-explain">
+  <!--- 教材のカテゴリー・タグ --->
+  <div class="content-category">
       <div class="weight-bold-text">
-        教材の説明
+        学校
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :content, class:"items-text", id:"item-info", placeholder:"教材の説明（必須 1,000文字まで）" ,rows:"7" ,maxlength:"1000" %>
-    </div>
-  </div>
-
-  <%# 教材の詳細 %>
-  <div class="items-detail">
-    <div class="weight-bold-text">教材の分類</div>
-    <div class="form">
-      <div class="weight-bold-text">
-        学校種
-        <span class="indispensable">必須</span>
-      </div>
-      <%= f.collection_select(:school_category_id, SchoolCategory.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+      <%= f.collection_select(:school_category_id, SchoolCategory.all, :id, :name, {}, {class:"select-box", id:"content-school_category"}) %>
       <div class="weight-bold-text">
         教科
         <span class="indispensable">必須</span>
       </div>
-      <%= f.collection_select(:subject_id, Subject.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
+      <%= f.collection_select(:subject_id, Subject.all, :id, :name, {}, {class:"select-box", id:"content-subject"}) %>
       <div class="weight-bold-text">
         学年
-        <span class="indispensable">任意</span>
+         <span class="dispensable">任意</span>
       </div>
-      <%= f.collection_select(:grade_id, Grade.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
+      <%= f.collection_select(:grade_id, Grade.all, :id, :name, {}, {class:"select-box", id:"content-grade"}) %>
+      <div class="weight-bold-text">
+        タグ
+        <span class="dispensable">任意</span>
+      </div>
+      <div class="content-tag">
     </div>
   </div>
 
-  <%# 下部ボタン %>
-  <div class="sell-btn-contents">
-    <%= f.submit "出品する",class:"sell-btn" %>
-    <%=link_to 'もどる', root_path, class:"back-btn" %>
+  <!--- 教材の名前・内容 -->
+  <div class="weight-bold-text">
+    教材の名前
+    <span class="indispensable">必須</span>
   </div>
-  <%# /下部ボタン %>
+  <%= f.text_area :title, class:"content-text", id:"content-name", placeholder:"教材の名前を入力する（100文字まで)" ,rows:"1", maxlength:"100" %>
+  <div class="content-explain">
+    <div class="weight-bold-text">
+      教材の説明
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_area :content, class:"content-text", id:"content-info", placeholder:"教材の詳しい説明を記入する（1,000文字まで）" ,rows:"7" ,maxlength:"1000" %>
+  </div>
+
+  <div class="weight-bold-text">
+    教材のファイル
+    <span class="indispensable">必須</span>
+  </div>
+
+  <div class="click-upload">
+    <%#= f.label :data, "ファイルを選ぶ", class: "file-btn" %>
+    <%= f.file_field :data, class: "file-btn-hidden", id:"content-data" %>
+  </div>
+
+  <!--- 投稿・更新・削除・戻るボタン --->
+  <div class="create-btn-contents">
+
+  <% if request.path == new_material_path %>
+    <%= f.submit "投稿する",class:"create-btn" %>
+    <%=link_to 'ホームに戻る', root_path, class:"back-btn link" %>
+  <% else %>
+    <%= f.submit "更新する",class:"create-btn" %>
+    <%=link_to '編集をやめる', material_path(@material), class:"back-btn link" %>
+    <%= link_to "削除する", material_path(@material), method: :delete, class:"destroy-btn white link" %>
+  <% end %>
+
+
+  </div>
+
 <% end %>

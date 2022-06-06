@@ -1,10 +1,12 @@
 .user__wrapper{
   min-height: calc(100vh - 161px);
+  background-color: bisque;
 }
 .table{
   border-collapse: collapse;
   margin-bottom: 32px;
   width: 50%;
+  background-color: aqua;
 }
 .table__col1{
   text-align: left;
@@ -21,14 +23,18 @@
   border-collapse: collapse;
   width: 70%;
   padding: 16px 8px;
+  background-color: blueviolet;
 }
 .user__card {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  background-color: brown;
 }
 
-.avatar {
-  border-radius: 50%;
+.user-avatar{
+  height: 100px;
+  width: 100px;
+  background-color: aliceblue;
 }

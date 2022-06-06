@@ -1,31 +1,63 @@
-      <%# 記事 %>
-      <div class="inner">
-        <h1 class="page-heading">質問一覧</h1>
-        <div class="card__wrapper">
-          <% @questions.each do |question| %>
-          <div class="card">
-            <div class="card__body">
-              <h2 class="card__title">
-                <%= link_to question.title, question_path(question.id)%>
-              </h2>
-              <div class="question-grade">
-                <%= question.genre.name %>
-              </div>
-              <div class="question-school-category">
-                <%= question.school_category.name %>
-              </div>
-              <div class="question-tag">
-                タグ　タグ　タグ　タグ　タグ
-              </div>
-              <div class="question-content">
-                <%= question.content %>
-              </div>
-              <div class="question-user">
-                <%= image_tag question.user.avatar.thumb.url, class:'avatar' %>
-                <%= link_to question.user.nickname, user_path(question.user) %>
-              </div>
-            </div>
+<div class="question-cards">
+  <div class="question-card-wrapper">
+
+    <h2 class="page-heading">相談一覧</h2>
+
+    <div class="question-cards-header">
+      <div class="question-status black">
+        回答受付中
+      </div>
+      <div class="question-status black">
+        解決済み
+      </div>
+      <div class="question-status black">
+        すべて
+      </div>
+    </div>
+
+    <% @questions.each do |question| %>
+
+    <div class="question-card">
+      <div class="question-card-top">
+        <div class="tag-s">
+          <div class="question-card-genre txt-s">
+            <%= question.genre.name  %>
           </div>
-          <% end %>
+        </div>
+        <% if question.school_category.name != '--' %>
+        <div class="tag-s">
+          <%= question.school_category.name %> 
+        </div>
+        <% end %>
+        <div class="tag-s">
+          <span>タグ</span>
         </div>
       </div>
+
+
+      <div class="question-card-middle">
+        <%= link_to question.title, question_path(question.id), class:'black1 ttl-s link' %>
+      </div>
+
+      <div class="question-cards-bottom">
+        <div class="question-card-answer-contents">
+          <div class="answer-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-chat-square-text" viewBox="0 0 16 16">
+              <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+              <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+          </div>
+          <div class="question-card-answer-count gray txt">
+            <%= question.answers.count %>
+          </div>
+        </div>
+        <div class="question-card-date gray txt">
+          <% question.created_at %>
+        </div>
+      </div>
+
+    </div>
+    
+    <% end %>
+  </div>
+</div>

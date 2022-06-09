@@ -1,4 +1,13 @@
 /*** フォントサイズ ***/
+.main {
+  min-height: 100vh;
+  padding-top: 70px;
+}
+
+.index-main {
+  min-height: 100vh;
+  padding-top: 140px;
+}
 
 .page-heading {
   font-size: 32px;
@@ -13,24 +22,20 @@
 
 .ttl {
   font-size: 24px;
-  line-height: 24px;
   font-weight: 600;
 }
 
 .ttl-s {
   font-size: 20px;
-  line-height: 20px;
   font-weight: 600;
 }
 
 .txt{
   font-size: 16px;
-  line-height: 16px;
 }
 
 .txt-s{
   font-size: 12px;
-  line-height: 12px;
 }
 
 /*** フォントカラー ***/
@@ -56,6 +61,14 @@
 
 .link {
   text-decoration: none;
+}
+
+.select {
+  color: #73D80E;
+}
+
+.hidden {
+  display: none;
 }
 
 /*** ユーザー画像 ***/
@@ -101,8 +114,22 @@
   text-decoration: none;
 }
 
-.edit {
+.edit-btn{
+  line-height: 26px;
+  width: 120px;
+  color: #888888;
+  border: 1px solid #888888;
+  border-radius: 30px;
+  text-align: center;
+}
 
+.bi-three-dots {
+  height: 30px;
+  width: 30px;
+  color: #888888;
+  background-color: #FFFFFF;
+  border: 2px solid #888888;
+  border-radius: 50%;
 }
 
 .follow-btn {
@@ -111,10 +138,11 @@
   font-size: 16px;
   font-weight: 400;
   text-align: center;
-  line-height: 36px;
+  line-height: 33px;
   color: #2DC714;
   border: 1px solid #2DC714;
   border-radius: 30px;
+  letter-spacing: 0;
 }
 
 .favorite-btn{
@@ -128,10 +156,9 @@
 }
 
 /* いいねアイコン */
-.bi-heart{
+.favorite-pink{
   height: 16px;
   width: 16px;
-  color: #EA61A3;
   position: absolute; top:9px; right:8px;
 }
 

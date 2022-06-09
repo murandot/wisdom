@@ -1,0 +1,40 @@
+<div class="question-cards">
+  <div class="question-card-wrapper">
+    <h2 class="page-heading">新着の相談</h2>
+    <% @questions.each do |question| %>
+    <div class="question-card">
+      <div class="question-card-top">
+        <div class="tag-s">
+          <div class="question-card-genre txt-s">
+            <%= question.genre.name  %>
+          </div>
+        </div>
+        <% if question.school_category.name != '--' %>
+        <div class="tag-s">
+          <%= question.school_category.name %> 
+        </div>
+        <% end %>
+        <%#<div class="tag-s">
+          <span>タグ</span>
+        </div>%>
+      </div>
+      <div class="question-card-middle">
+        <%= link_to question.title, question_path(question.id), class:'black1 ttl-s link' %>
+      </div>
+      <div class="question-cards-bottom">
+        <div class="question-card-answer-contents">
+          <div class="answer-icon">
+            <%= image_tag 'answer.svg' %>
+          </div>
+          <div class="question-card-answer-count gray txt">
+            <%= question.answers.count %>
+          </div>
+        </div>
+        <div class="question-card-date gray txt">
+          <% question.created_at %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

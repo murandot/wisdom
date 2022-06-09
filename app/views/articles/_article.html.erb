@@ -1,55 +1,37 @@
 <div class="article-cards">
   <div class="article-card-wrapper">
-
-    <h2 class="page-heading">記事一覧</h2>
-
     <% @articles.each do |article| %>
     <div class="article-card">
-
       <div class="article-card-image">
         <%= image_tag article.image.index_thumb.url, class: 'article-card-image' %>
         <div class="favorite-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-          </svg>
+          <%= image_tag 'favorite-pink.svg', class: 'favorite-pink' %>
         </div>
       </div>
-
       <div class="article-card-category">
         <div class="tag-s">
-          <div class="article-card-genre">
             <%= article.genre.name %>
-          </div>
         </div>
         <div class="tag-s">
-          <div class="article-card-school_category">
             <%= article.school_category.name %>
-          </div>
         </div>
-        <div class="tag-s">
-          <div class="article-card-tag">
+        <%#<div class="tag-s">
             <span>タグ</span>
-          </div>
-        </div>
+        </div>%>
       </div>
-
       <div class="article-card-title">
         <%= link_to article.title, article_path(article.id), class:'black1 ttl-s link' %>
       </div>
-
       <div class="article-card-content gray txt">
         <%= article.content %>
       </div>
-
       <div class="article-card-user-contents">
         <%= image_tag article.user.avatar.url, class:'avatar' %>
         <div class="article-card-user-nickname">
           <%= link_to article.user.nickname, user_path(article.user), class: 'black2 txt-s link' %>
         </div>
       </div>
-
     </div>
-
     <% end %>
   </div>
 </div>

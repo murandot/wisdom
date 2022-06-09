@@ -2,9 +2,9 @@
 
 <div class='form-wrap'>
   <div class='form-header'>
-    <h1 class='form-header-text'>
-      登録情報入力
-    </h1>
+    <h2 class='form-header-text'>
+      登録情報の入力
+    </h2>
   </div>
 
   <%#= render 'shared/error_messages', model: f.object %>
@@ -14,7 +14,7 @@
       <label class="form-text">プロフィール画像</label>
       <span class="indispensable">任意</span>
     </div>
-    <%= f.file_field :avatar, id:"avatar" %>
+    <%= f.file_field :avatar, class:"input-file", id:"avatar" %>
   </div>
 
   <div class="form-group">
@@ -39,7 +39,6 @@
       <span class="indispensable">必須</span>
     </div>
     <%= f.password_field :password, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字" %>
-    <p class='info-text'>※英字と数字の両方を含めて設定してください</p>
   </div>
 
   <div class="form-group">
@@ -52,48 +51,31 @@
 
   <div class="form-group">
     <div class='form-text-wrap'>
-      <label class="form-text">学校</label>
+      <label class="form-text">学校種／教科</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.collection_select(:school_category_id, SchoolCategory.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
-  </div>
-      
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">教科</label>
-      <span class="indispensable">必須</span>
+    <div class="select-categories">
+      <%= f.collection_select(:school_category_id, SchoolCategory.all, :id, :name, {}, {class:"select-category", id:"item-category"}) %>
+      <%= f.collection_select(:subject_id, Subject.all, :id, :name, {}, {class:"select-category", id:"item-category"}) %>
     </div>
-    <%= f.collection_select(:subject_id, Subject.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
   </div>
+
 
   <div class="form-group">
     <div class='form-text-wrap'>
-      <label class="form-text">学年</label>
-      <span class="indispensable">任意</span>
+      <label class="form-text">学年／部活動／分掌</label>
+      <span class="dispensable">任意</span>
     </div>
-    <%= f.collection_select(:grade_id, Grade.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+    <div class="select-categories">
+      <%= f.collection_select(:grade_id, Grade.all, :id, :name, {}, {class:"select-category", id:"item-category"}) %>
+      <%= f.collection_select(:club_id, Club.all, :id, :name, {}, {class:"select-category", id:"item-category"}) %>
+      <%= f.collection_select(:duty_id, Duty.all, :id, :name, {}, {class:"select-category", id:"item-category"}) %>
+    </div>
   </div>
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">部活動</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.collection_select(:club_id, Club.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
-  </div>
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">分掌</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.collection_select(:duty_id, Duty.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
-  </div>
-
-  <div class='register-btn'>
-    <%= f.submit "ユーザー登録" ,class:"register-red-btn" %>
+  <div class='registration'>
+    <%= f.submit "登録する" ,class:"register-btn" %>
   </div>
 
 </div>
 <% end %>
-<%= render "shared/footer"%>

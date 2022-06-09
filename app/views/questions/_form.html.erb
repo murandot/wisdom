@@ -19,14 +19,13 @@
       <span class="dispensable">任意</span>
     </div>
     <%= f.collection_select(:school_category_id, SchoolCategory.all, :id, :name, {}, {class:"select-box", id:"content-school_category"}) %>
-    <div class="weight-bold-text">
+    <%#<div class="weight-bold-text">
       タグ
       <span class="dispensable">任意</span>
     </div>
     <div class="content-tag">
-    </div>
+    </div>%>
   </div>
-
   <!--- 記事の名前・内容 -->
   <div class="weight-bold-text">
     相談のタイトル
@@ -40,10 +39,8 @@
     </div>
     <%= f.text_area :content, class:"content-text", id:"content-info", placeholder:"相談の内容を書く（1000文字まで）" ,rows:"20" ,maxlength:"1000" %>
   </div>
-
   <!--- 投稿・更新・削除・戻るボタン --->
   <div class="create-btn-contents">
-
   <% if request.path == new_question_path %>
     <%= f.submit "投稿する",class:"create-btn" %>
     <%=link_to 'ホームに戻る', root_path, class:"back-btn link" %>
@@ -52,8 +49,6 @@
     <%=link_to '編集をやめる', question_path(@question), class:"back-btn link" %>
     <%= link_to "削除する", question_path(@question), method: :delete, class:"destroy-btn white link" %>
   <% end %>
-
-
   </div>
 
 <% end %>

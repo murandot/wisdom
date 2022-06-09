@@ -13,7 +13,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  process resize_to_fill: [100, 100, 'Center']
+  process resize_to_fill: [200, 200, 'Center']
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url(*args)
@@ -57,6 +57,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   version :thumb64 do
     process resize_to_fit: [64, 64]
+  end
+
+  version :thumb120 do
+    process resize_to_fit: [120, 120]
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.

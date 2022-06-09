@@ -1,57 +1,76 @@
 <%= render "shared/header" %>
 
 <div class="main">
-  <div class="inner">
-    <div class="user__wrapper">
-      <h2 class="page-heading">
-        <%= "#{@user.nickname}さんの情報"%>
-      </h2>
-
-      <% if current_user == @user %>
-        <%= link_to "編集", edit_user_registration_path(@user), method: :get, class: "item-red-btn" %>
-        <%= link_to "削除", user_registration_path(@user), method: :delete, class:"item-destroy" %>
-      <% end %>
-      <br>
-      <div class="user-avatar">
-        <%= image_tag @user.avatar.url, class:'avatar' %>
+  <div class="content-main">
+    <!-- ユーザーの詳細情報 -->
+    <div class="user-detail">
+      <div class="user-detail-avatar">
+        <%= image_tag @user.avatar.thumb120.url, class:'avatar' %>
       </div>
-      <br>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th class="table__col1">ユーザー名</th>
-            <td class="table__col2"><%= @user.nickname %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">学校種</th>
-            <td class="table__col2"><%= @user.school_category.name %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">教科</th>
-            <td class="table__col2"><%= @user.subject.name %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">学年</th>
-            <td class="table__col2"><%= @user.grade.name %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">クラブ活動・部活動</th>
-            <td class="table__col2"><%= @user.club.name %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">校務分掌</th>
-            <td class="table__col2"><%= @user.duty.name %></td>
-          </tr>
-        </tbody>
-      </table>
-      <h2 class="page-heading">
-        <%= "#{@user.nickname}さんの教材"%>
-      </h2>
-      <div class="user__card">
-        <%= render partial: 'materials/material', locals: {materials: @user.materials} %>
+      <div class="user-detail-info">
+        <div class="user-detail-nickname ttl black1">
+          <%= @user.nickname %>
+        </div>
+        <div class="user-detail-category">
+          <span>
+            <%= @user.school_category.name %>
+          </span>
+          <% if @user.grade.name != '--' %>
+            <span>
+              /<%= @user.grade.name %>年
+            </span>
+          <% end %>
+            <span>
+            /<%= @user.subject.name %>
+            </span>
+          <% if @user.duty.name != '--' %>
+            <span>
+              /<%= @user.duty.name %>
+            </span>
+          <% end %>
+          <% if @user.club.name != '--' %>
+            <span>
+              /<%= @user.club.name %>
+            </span>
+          <% end %>
+        </div>
+        <div class="user-detail-followship black2">
+          <span>
+            フォロー 0
+          </span>
+          <span>
+            フォロワー 0
+          <span>
+        </div>
+      </div>
+      <div class="user-detail-button">
+      <% if current_user == @user %>
+          <%= link_to 'プロフィールを編集', edit_user_registration_path(@user), method: :get, class: "profile-edit-btn link" %>
+      <% else %>
+        <div class="follow-btn">
+          フォロー
+        </div>
+      <% end %>
       </div>
     </div>
-  </div>
+    <!-- ユーザーの教材・記事・相談の選択 -->
+    <div class="contents-category">
+      <div class="category-material select">
+        <%= image_tag 'material-green.svg'%>
+        <span>教材</span>
+      </div>
+      <div class="category-article">
+        <%= image_tag 'article-gray.svg'%>
+        <span>記事</span>
+      </div>
+      <div class="category-question">
+        <%= image_tag 'question-gray.svg'%>
+        <span>相談</span>
+      </div>
+    </div>
 </div>
+
+<!-- ユーザーの教材・記事・相談 -->
+<%= render partial: 'materials/material', locals: {materials: @user.materials} %>
 
 <%= render "shared/footer" %>

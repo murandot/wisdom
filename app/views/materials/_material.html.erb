@@ -1,32 +1,45 @@
-      <%# 教材 %>
-      <div class="inner">
-        <h1 class="page-heading">教材一覧</h1>
-        <div class="card__wrapper">
-          <% @materials.each do |material| %>
-          <div class="card">
-            <%= image_tag 'card.png', class: 'card__img' %>
-            <div class="card__body">
-              <h2 class="card__title">
-                <%= link_to material.title, material_path(material.id)%>
-              </h2>
-              <div class="material-school-category">
-                <%= material.school_category.name %>
-              </div>
-              <div class="material-grade">
-                <%= material.grade.name %>年
-              </div>
-              <div class="material-subject">
-                <%= material.subject.name %>
-              </div>
-              <div class="material-subject">
-                タグ　タグ　タグ　タグ　タグ
-              </div>
-              <div class="material-user">
-                <%= image_tag material.user.avatar_url(:thumb), class:'avatar' %>
-                <%= link_to material.user.nickname, user_path(material.user) %>
-              </div>
-            </div>
-          </div>
-          <% end %>
+<div class="materials">
+  <div class="material-wrapper">
+    <% @materials.each do |material| %>
+    <div class="material-card">
+      <div class="material-card-image">
+        <%= image_tag 'card.png', class: 'material-card-image' %>
+        <div class="favorite-btn">
+          <%= image_tag 'favorite-pink.svg', class: 'favorite-pink' %>
         </div>
       </div>
+      <div class="material-card-category">
+        <div class="tag-s">
+          <div class="material-card-school_category-tag">
+            <%= material.school_category.name %>
+          </div>
+        </div>
+        <div class="tag-s">
+          <div class="material-card-grade-tag">
+            <%= material.grade.name %>年
+          </div>
+        </div>   
+        <div class="tag-s">
+          <div class="material-card-subject-tag">
+            <%= material.subject.name %>
+          </div>
+        </div>
+        <%#<div class="tag-s">
+          <div class="material-card-subject">
+            <span>タグ</span>
+          </div>
+        </div>%>
+      </div>
+      <div class="material-card-title">
+        <%= link_to material.title, material_path(material.id), class: 'black1 ttl-s link'%>
+      </div>
+      <div class="material-card-user-contents">
+        <%= image_tag material.user.avatar.url, class:'avatar' %>
+        <div class="material-card-user-nickname">
+          <%= link_to material.user.nickname, user_path(material.user), class: 'black2 txt link' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>

@@ -146,6 +146,7 @@ Things you may want to cover:
 | user               | references | null: false, foreign_key: true |
 | question           | references | null: false, foreign_key: true |
 
+
 ### Association
 - belongs_to :user
 - belongs_to :question

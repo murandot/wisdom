@@ -1,32 +1,37 @@
-      <%# 記事 %>
-      <div class="inner">
-        <h1 class="page-heading">記事一覧</h1>
-        <div class="card__wrapper">
-          <% @articles.each do |article| %>
-          <div class="card">
-            <%= image_tag article.image.index_thumb.url, class: 'card__img' %>
-            <div class="card__body">
-              <h2 class="card__title">
-                <%= link_to article.title, article_path(article.id)%>
-              </h2>
-              <div class="article-genre">
-                <%= article.genre.name %>
-              </div>
-              <div class="article-school-category">
-                <%= article.school_category.name %>
-              </div>
-              <div class="article-tag">
-                タグ　タグ　タグ　タグ　タグ
-              </div>
-              <div class="aeticle-content">
-                <%= article.content %>
-              </div>
-              <div class="article-user">
-                <%= image_tag article.user.avatar.thumb.url, class:'avatar' %>
-                <%= link_to article.user.nickname, user_path(article.user) %>
-              </div>
-            </div>
-          </div>
-          <% end %>
+<div class="article-cards">
+  <div class="article-card-wrapper">
+    <% @articles.each do |article| %>
+    <div class="article-card">
+      <div class="article-card-image">
+        <%= image_tag article.image.index_thumb.url, class: 'article-card-image' %>
+        <div class="favorite-btn">
+          <%= image_tag 'favorite-pink.svg', class: 'favorite-pink' %>
         </div>
       </div>
+      <div class="article-card-category">
+        <div class="tag-s">
+            <%= article.genre.name %>
+        </div>
+        <div class="tag-s">
+            <%= article.school_category.name %>
+        </div>
+        <%#<div class="tag-s">
+            <span>タグ</span>
+        </div>%>
+      </div>
+      <div class="article-card-title">
+        <%= link_to article.title, article_path(article.id), class:'black1 ttl-s link' %>
+      </div>
+      <div class="article-card-content gray txt">
+        <%= article.content %>
+      </div>
+      <div class="article-card-user-contents">
+        <%= image_tag article.user.avatar.url, class:'avatar' %>
+        <div class="article-card-user-nickname">
+          <%= link_to article.user.nickname, user_path(article.user), class: 'black2 txt-s link' %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

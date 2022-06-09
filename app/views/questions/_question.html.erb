@@ -1,31 +1,50 @@
-      <%# 記事 %>
-      <div class="inner">
-        <h1 class="page-heading">質問一覧</h1>
-        <div class="card__wrapper">
-          <% @questions.each do |question| %>
-          <div class="card">
-            <div class="card__body">
-              <h2 class="card__title">
-                <%= link_to question.title, question_path(question.id)%>
-              </h2>
-              <div class="question-grade">
-                <%= question.genre.name %>
-              </div>
-              <div class="question-school-category">
-                <%= question.school_category.name %>
-              </div>
-              <div class="question-tag">
-                タグ　タグ　タグ　タグ　タグ
-              </div>
-              <div class="question-content">
-                <%= question.content %>
-              </div>
-              <div class="question-user">
-                <%= image_tag question.user.avatar.thumb.url, class:'avatar' %>
-                <%= link_to question.user.nickname, user_path(question.user) %>
-              </div>
-            </div>
+<div class="question-cards">
+  <div class="question-card-wrapper">
+    <div class="question-cards-header">
+      <div class="question-status ">
+        回答受付中
+      </div>
+      <div class="question-status black">
+        解決済み
+      </div>
+      <div class="question-status green">
+        すべて
+      </div>
+    </div>
+    <% @questions.each do |question| %>
+    <div class="question-card">
+      <div class="question-card-top">
+        <div class="tag-s">
+          <div class="question-card-genre txt-s">
+            <%= question.genre.name  %>
           </div>
-          <% end %>
+        </div>
+        <% if question.school_category.name != '--' %>
+        <div class="tag-s">
+          <%= question.school_category.name %> 
+        </div>
+        <% end %>
+        <%#<div class="tag-s">
+          <span>タグ</span>
+        </div>%>
+      </div>
+      <div class="question-card-middle">
+        <%= link_to question.title, question_path(question.id), class:'black1 ttl-s link' %>
+      </div>
+      <div class="question-cards-bottom">
+        <div class="question-card-answer-contents">
+          <div class="answer-icon">
+            <%= image_tag 'answer.svg' %>
+          </div>
+          <div class="question-card-answer-count gray txt">
+            <%= question.answers.count %>
+          </div>
+        </div>
+        <div class="question-card-date gray txt">
+          <% question.created_at %>
         </div>
       </div>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+/*** ユーザーの詳細情報 ***/
+.user-detail {
+  height: 120px;
+  display: flex;
+}
+
+.user-detail-avatar {
+  height: 120px;
+  width: 120px;
+}
+
+.user-detail-info {
+  width: calc(100vw - 180px - 180px - 120px - 190px);
+  display: flex;
+  flex-direction: column;
+  margin-left: 36px;
+}
+
+.user-detail-nickname {
+  height: 32px;
+}
+
+.user-detail-category {
+  margin-top: 16px;
+  display: flex;
+}
+
+.user-detail-category span {
+  color: #888888;
+}
+
+.user-detail-followship{
+  display: flex;
+  gap:36px;
+  margin-top: 16px;
+}
+
+.user-detail-button {
+  width: 190px;
+  display: flex;
+  align-items: center;
+}
+
+.profile-edit-btn {
+  width: 195px;
+  line-height: 36px;
+  text-align: center;
+  color: #888888;
+  font-weight: bold;
+  border: 1px solid #888888;
+  border-radius: 30px;
+  letter-spacing: 0.1rem;
+  padding: 3px;
+}
+
+/*** ユーザーの教材・記事・相談の選択 ***/
+.contents-category {
+  color: #888888;
+  border-bottom: 1px solid #888888 ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 240px;
+  margin-top: 40px;
+  padding-bottom: 8px;
+}
+
+.category-material {
+  
+}
+
+.category-article {
+
+}
+
+.category-question {
+
+}
+
+/*** ユーザーの教材・記事・相談の表示 ***/
+.user-contents {
+  width: 100%;
+}

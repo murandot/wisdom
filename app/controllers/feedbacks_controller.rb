@@ -7,7 +7,7 @@ class FeedbacksController < ApplicationController
     if @feedback.save
       redirect_to "/materials/#{@feedback.material.id}"
     else
-      render "material/show"
+      render "materials/show"
     end
   end
 

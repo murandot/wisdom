@@ -1,0 +1,132 @@
+/*** ホーム画面 ***/
+.home-article-cards {
+  height: 100%;
+  width: 100vw;
+}
+
+.article-heading{
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.home-article-card-wrapper {
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  padding: 0 378px;
+  gap: 32px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+.home-article-card {
+  width: 692px;
+  margin-bottom: 40px;
+  padding: 16px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+
+/* ホーム画面のカードの高さ統一 */
+.home-article-card-title {
+  min-height: 60px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  margin-top: 16px;
+}
+
+.home-article-card-content {
+  min-height: 72px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  margin-top: 8px;
+}
+
+
+
+/*** 記事一覧表示画面 ***/
+
+.article-cards {
+  height: 100%;
+  width: 100vw;
+  padding: 40px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.article-card-wrapper {
+  min-height: calc(100vh - 140px);
+  width: 692px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+}
+
+.article-card {
+  width: 660px;
+  border-top: 1px solid #888888;
+  margin-bottom: 40px;
+  padding-top: 16px;
+}
+
+.article-card-image {
+  height: 210px;
+  width: 660px;
+  position: relative;
+}
+
+.article-card-category {
+  height: 22px;
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.article-card-genre {
+
+}
+
+.article-school-category {
+
+}
+
+.article-card-tag {
+
+}
+
+.article-card-title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  margin-top: 16px;
+}
+
+.article-card-content {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  margin-top: 8px;
+}
+
+.article-card-user-contents {
+  height: 32px;
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.article-card-user-nickname {
+  height: 32px;
+}

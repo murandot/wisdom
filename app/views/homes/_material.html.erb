@@ -1,0 +1,39 @@
+<div class="materials">
+  <h1 class="page-heading"><%= current_user.nickname %>さんにおすすめの教材</h1>
+  <div class="material-wrapper">
+    <% @materials.each do |material| %>
+    <div class="material-card">
+      <div class="material-card-image">
+        <%= image_tag 'card.png', class: 'material-card-image' %>
+        <div class="favorite-btn">
+          <%= image_tag 'favorite-pink.svg', class: 'favorite-pink' %>
+        </div>
+      </div>
+      <div class="material-card-category">
+        <div class="tag-s">
+            <%= material.school_category.name %>
+        </div>
+        <div class="tag-s">
+            <%= material.grade.name %>年
+          </div>
+        </div>   
+        <div class="tag-s">
+            <%= material.subject.name %>
+        </div>
+        <%#<div class="tag-s">
+            <span>タグ</span>
+        </div>%>
+      </div>
+      <div class="material-card-title">
+        <%= link_to material.title, material_path(material.id), class: 'black1 ttl-s link'%>
+      </div>
+      <div class="material-card-user-contents">
+        <%= image_tag material.user.avatar.url, class:'avatar' %>
+        <div class="material-card-user-nickname">
+          <%= link_to material.user.nickname, user_path(material.user), class: 'black2 txt link' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>

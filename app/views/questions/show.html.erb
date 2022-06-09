@@ -1,96 +1,89 @@
 <%= render "shared/header" %>
 
-<%# 相談の概要 %>
-<div class="item-show">
-  <div class="item-box">
-    <h2 class="name">
-      <%= @question.title %>
-    </h2>
-
-    <% if current_user == @question.user %>
-      <%= link_to "編集", edit_question_path(@question), method: :get, class: "item-red-btn" %>  
-      <p class="or-text">or</p>
-      <%= link_to "削除", question_path(@question), method: :delete, class:"item-destroy" %>
-    <% end %>
-
-    <div class="question-detail">
-      <%# 相談の投稿者 %>
-      <div class="question-user">
-        投稿者：
-        <%= link_to @question.user.nickname, user_path(@question.user) %>
-        <%= image_tag @question.user.avatar.url, class: 'avatar' %>
-      </div>
-      <%# 相談のジャンル%>
-      <div class="question-genre">
-        ジャンル：
-        <%= @question.genre.name %>
-      </div>
-      <%# 相談の学校種%>
-      <div class="question-genre">
-        学校種：
-        <%= @question.school_category.name %>
-      </div>
-    </div>
-
-    <%# 相談の内容%>
-    <div class="item-explain-box">
-      内容：
-      <span><%= @question.content %></span>
-    </div>
-    
-    <%# いいね欄 %>
-    <div class="option">
-      <div class="favorite-btn">
-        <%= image_tag "card.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
-      </div>
-      <div class="report-btn">
-        <%= image_tag "card.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
-        <span>不適切な教材の通報</span>
-      </div>
-    </div>
-  </div>
-
-  <%# 回答欄 %>
-  <div class="answer-box">
-    <div class="answer-form">
-      <%# 回答投稿フォーム %>        
-      <% if user_signed_in? %>
-        <%= form_with(model: [@question,@answer],local: true) do |f|%>
-          <div class="field">
-            <%= f.label :content, "回答する" %><br />
-            <%= f.text_field :content, id:"answer_content" %>
-          </div>
-          <div class="actions">
-            <%= f.submit "送信する", class: :form__btn  %>
+<div class="main">
+  <div class="content-main">
+    <div class="top-contents">
+      <div class="user-contents">
+        <%= image_tag @question.user.avatar.thumb64.url, class:'avatar' %>
+        <div class="user-nickname">
+          <%= link_to @question.user.nickname, user_path(@question.user), class: 'black2 text link' %>
+        </div>
+        <div class="user-detail-button">
+        <% if current_user == @question.user %>
+            <%= link_to '相談を編集', edit_question_path(@question), method: :get, class: "edit-btn link" %>
+        <% else %>
+          <div class="follow-btn">
+            フォロー
           </div>
         <% end %>
+        </div>
+      </div>
+      <div class="info-contents">
+        <%#= 相談の閲覧数 %>
+        <div class="info-content">
+          <%= image_tag 'look.svg', class:'info-icon' %>
+          <span>1000</span>
+        </div>
+        <%#= 相談のいいね数 %>
+        <div class="info-content">
+          <%= image_tag 'favorite-gray.svg', class:'info-icon' %>
+          <span>1000</span>
+        </div>
+      </div>
+    </div>
+    <div class="category">
+      <!-- 相談のジャンル -->
+      <div class="tag-s">
+          <%= @question.genre.name %>
+      </div>
+      <!-- 相談の学校種 -->
+      <div class="tag-s">
+          <%= @question.school_category.name %>
+      </div> 
+      <!-- 相談のタグ(任意）) -->
+      <!--<div class="tag-s">
+          <span>タグ</span>
+      </div>-->
+    </div>
+    <div class="title ttl black1">
+      <%= @question.title %>
+    </div>
+    <div class="content txt black2">
+        <%= @question.content %>
+    </div>
+  </div>
+
+  <%# コメント欄 %>    
+  <%# コメント欄 %>
+    <%# コメントの一覧表示 %>
+    <div class="comments">
+      <div class="comment-header">
+        この相談への回答
+      </div>
+      <% @answers.each do |answer| %>
+        <div class="comment">
+          <div class="comment-user-contents">
+            <%= image_tag answer.user.avatar.thumb56.url, class:'avatar' %>
+            <%= link_to answer.user.nickname, user_path(answer.user), class: 'comment_user txt black2 link' %>
+          </div>
+        <div class="comment-content txt black2">
+          <%= answer.content %>
+        </div>
+      </div>
       <% end %>
     </div>
-    <%# 回答一覧表示 %>
-    <br>
-    <h2>回答</h2>
-    <ul class="answer_lists">
-      <% @answers.each do |answer| %>
-        <li class="answer_list">
-          <%= answer.content %>
-          <%= link_to answer.user.nickname, user_path(answer.user), class: :answer_user %>
-      </li>
-      <% end %>
-    </ul>
-  </div>
 
-  <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の質問
-    </a>
-    <a href="#" class="change-item-btn">
-      後ろの質問 ＞
-    </a>
-  </div>
-  <a href="#" class="another-item"><%= @question.genre.name %>をもっと見る</a>
 </div>
 
-<%= link_to "戻る", :back %>
 
-<%= render "shared/footer" %>
+<%# コメントの投稿フォーム %>        
+<%= form_with model: [@question,@answer], class: 'comment-form',local: true do |f|%>
+  <div class="comment-input">
+    <%= f.text_area :content, class: 'comment-input-field', placeholder: 'コメントを入力する', id:"comment_content" %>
+  </div>
+  <div class="comment-submit">
+    <%= button_tag type: 'submit', class: "comment-submit-btn" do %>
+        <%= image_tag 'send.svg' %>
+    <% end %>
+  </div>
+<% end %>

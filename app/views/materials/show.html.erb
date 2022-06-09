@@ -1,102 +1,104 @@
 <%= render "shared/header" %>
 
-<%# 教材の概要 %>
-<div class="item-show">
-  <div class="item-box">
-    <h2 class="name">
-      <%= @material.title %>
-    </h2>
-    <div class="item-img-content">
-      <%= image_tag 'card.png', class: 'card__img' %>
-    </div>
-
-    <div class="material-data">
-      <%= @material[:data] %>
-      <%= link_to "ダウンロード", download_material_path(@material) %>
-    </div>
-
-    <% if current_user == @material.user %>
-      <%= link_to "編集", edit_material_path(@material), method: :get, class: "item-red-btn" %>  
-      <p class="or-text">or</p>
-      <%= link_to "削除", material_path(@material), method: :delete, class:"item-destroy" %>
-    <% end %>
-
-    <div class="item-explain-box">
-      <span><%= @material.content %></span>
-    </div>
-    <table class="detail-table">
-      <tbody>
-        <tr>
-          <th class="detail-item">投稿者</th>
-          <td class="detail-value"><%= link_to @material.user.nickname, user_path(@material.user) %></td>
-          <%= image_tag @material.user.avatar.url, class: 'avatar' %>
-        </tr>
-        <tr>
-          <th class="detail-item">学校</th>
-          <td class="detail-value"><%= @material.school_category.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">学年</th>
-          <td class="detail-value"><%= @material.grade.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">教科</th>
-          <td class="detail-value"><%= @material.subject.name %></td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="option">
-      <div class="favorite-btn">
-        <%= image_tag "card.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
-      </div>
-      <div class="report-btn">
-        <%= image_tag "card.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
-        <span>不適切な教材の通報</span>
-      </div>
-    </div>
-  </div>
-
-  <%# フィードバック欄 %>
-  <div class="feedback-box">
-    <div class="feedback-form">
-      <%# フェードバック投稿フォーム %>        
-      <% if user_signed_in? %>
-        <%= form_with(model: [@material,@feedback],local: true) do |f|%>
-          <div class="field">
-            <%= f.label :content, "コメントする" %><br />
-            <%= f.text_field :content, id:"feedback_content" %>
-          </div>
-          <div class="actions">
-            <%= f.submit "送信する", class: :form__btn  %>
+<div class="main">
+  <div class="content-main">
+    <div class="top-contents">
+      <div class="user-contents">
+        <%= image_tag @material.user.avatar.thumb64.url, class:'avatar' %>
+        <div class="user-nickname">
+          <%= link_to @material.user.nickname, user_path(@material.user), class: 'black2 text link' %>
+        </div>
+        <div class="user-detail-button">
+        <% if current_user == @material.user %>
+            <%= link_to '教材を編集', edit_material_path(@material), method: :get, class: "edit-btn link" %>
+        <% else %>
+          <div class="follow-btn">
+            フォロー
           </div>
         <% end %>
-      <% end %>
+        </div>
+      </div>
+      <div class="info-contents">
+        <%#= 相談の閲覧数 %>
+        <div class="info-content">
+          <%= image_tag 'look.svg', class:'info-icon' %>
+          <span>1000</span>
+        </div>
+        <%#= 相談のダウンロード数 %>
+        <div class="info-content">
+          <%= image_tag 'download-gray.svg', class:'info-icon' %>
+          <span>1000</span>
+        </div>
+        <%#= 相談のいいね数 %>
+        <div class="info-content">
+          <%= image_tag 'favorite-gray.svg', class:'info-icon' %>
+          <span>1000</span>
+        </div>
+      </div>
     </div>
-    <%# フィードバック一覧表示 %>
-    <br>
-    <h2>フィードバック</h2>
-    <ul class="feedbacks_lists">
-      <% @feedbacks.each do |feedback| %>
-        <li class="feedback_list">
-          <%= feedback.content %>
-          <%= link_to feedback.user.nickname, user_path(feedback.user), class: :feedback_user %>
-      </li>
-      <% end %>
-    </ul>
+    <div class="image">
+      <%= image_tag 'card.png', class: 'image' %>
+      <div class="favorite-btn">
+        <%= image_tag 'favorite-pink.svg', class: 'favorite-pink' %>
+      </div>
+    </div>
+    <div class="category">
+        <!-- 教材の学校種 -->
+      <div class="tag-s">
+          <%= @material.school_category.name %>
+      </div>
+      <!-- 教材の学年 -->
+      <div class="tag-s">
+          <%= @material.grade.name %>年
+      </div>   
+      <!-- 教材の教科 -->
+      <div class="tag-s">
+          <%= @material.subject.name %>
+      </div>
+      <!-- 教材のタグ(任意）) -->
+      <!--<div class="tag-s">
+          <span>タグ</span>
+      </div>-->
+    </div>
+    <div class="title ttl black1">
+      <%= @material.title %>
+    </div>
+    <div class="content txt black2">
+        <%= @material.content %>
+    </div>
+    <div class="download">
+      <%= link_to image_tag('download-green.svg', class: 'download-icon'), download_material_path(@material) %>
+      <%= link_to @material[:data], download_material_path(@material), class: 'data link' %>
+    </div>
   </div>
 
-  <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の教材
-    </a>
-    <a href="#" class="change-item-btn">
-      後ろの教材 ＞
-    </a>
+  <%# コメントの一覧表示 %>
+  <div class="comments">
+    <div class="comment-header">
+      この教材へのコメント
+    </div>
+    <% @feedbacks.each do |feedback| %>
+      <div class="comment">
+        <div class="comment-user-contents">
+          <%= image_tag feedback.user.avatar.thumb56.url, class:'avatar' %>
+          <%= link_to feedback.user.nickname, user_path(feedback.user), class: 'comment_user txt black2 link' %>
+        </div>
+        <div class="comment-content txt black2">
+          <%= feedback.content %>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <a href="#" class="another-item"><%= @material.school_category.name %>をもっと見る</a>
 </div>
 
-<%= link_to "戻る", :back %>
-
-<%= render "shared/footer" %>
+<%# コメントの投稿フォーム %>        
+<%= form_with model: [@material,@feedback], class: 'comment-form',local: true do |f|%>
+  <div class="comment-input">
+    <%= f.text_area :content, class: 'comment-input-field', placeholder: 'コメントを入力する', id:"comment_content" %>
+  </div>
+  <div class="comment-submit">
+    <%= button_tag type: 'submit', class: "comment-submit-btn" do %>
+        <%= image_tag 'send.svg' %>
+    <% end %>
+  </div>
+<% end %>

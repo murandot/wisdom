@@ -1,0 +1,28 @@
+.top_page {
+  width: 100vw;
+  height: auto;
+  position: relative;
+}
+
+.top_page-box{
+  max-width: 100%;
+  height: auto;
+  display: flex;
+  gap: 20vw;
+  position: relative;
+  margin-left: 35vw;
+  z-index: 100;
+}
+
+.top_page-btn{
+  width: 10vw;
+  position: absolute;
+  top: 70%;
+  padding-top: 70vh;
+}
+
+.top_page-image {
+  max-width: 100%;
+  height: auto;
+  position: absolute;
+}

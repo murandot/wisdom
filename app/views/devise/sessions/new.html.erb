@@ -27,12 +27,12 @@
     <%= f.password_field :password, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字", autocomplete: "current-password" %>
   </div>
 
-    <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me, class:"check-box" %>
-      <%= f.label :remember_me,  "自動入力をオンにする" %>
-    </div>
-    <% end %>
+  <% if devise_mapping.rememberable? %>
+  <div class="field">
+    <%= f.check_box :remember_me, class:"check-box" %>
+    <%= f.label :remember_me,  "自動入力をオンにする" %>
+  </div>
+  <% end %>
 
   <div class='registration'>
     <%= f.submit "ログインする" ,class:"register-btn" %>

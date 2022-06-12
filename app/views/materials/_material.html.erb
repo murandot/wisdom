@@ -14,11 +14,13 @@
             <%= material.school_category.name %>
           </div>
         </div>
+        <% if material.grade.name != '--' %>
         <div class="tag-s">
           <div class="material-card-grade-tag">
             <%= material.grade.name %>年
           </div>
-        </div>   
+        </div>  
+        <% end %> 
         <div class="tag-s">
           <div class="material-card-subject-tag">
             <%= material.subject.name %>

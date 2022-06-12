@@ -12,9 +12,11 @@
         <div class="tag-s">
             <%= article.genre.name %>
         </div>
+        <% if article.school_category.name != '--' %>
         <div class="tag-s">
             <%= article.school_category.name %>
         </div>
+        <% end %>
         <%#<div class="tag-s">
             <span>タグ</span>
         </div>%>

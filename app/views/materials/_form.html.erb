@@ -22,27 +22,27 @@
 
   <!--- 教材のカテゴリー・タグ --->
   <div class="content-category">
-      <div class="weight-bold-text">
-        学校
-        <span class="indispensable">必須</span>
-      </div>
-      <%= f.collection_select(:school_category_id, SchoolCategory.all, :id, :name, {}, {class:"select-box", id:"content-school_category"}) %>
-      <div class="weight-bold-text">
-        教科
-        <span class="indispensable">必須</span>
-      </div>
-      <%= f.collection_select(:subject_id, Subject.all, :id, :name, {}, {class:"select-box", id:"content-subject"}) %>
-      <div class="weight-bold-text">
-        学年
-         <span class="dispensable">任意</span>
-      </div>
-      <%= f.collection_select(:grade_id, Grade.all, :id, :name, {}, {class:"select-box", id:"content-grade"}) %>
+    <div class="weight-bold-text">
+      学校
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.collection_select(:school_category_id, SchoolCategory.all, :id, :name, {}, {class:"select-box", id:"content-school_category"}) %>
+    <div class="weight-bold-text">
+      教科
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.collection_select(:subject_id, Subject.all, :id, :name, {}, {class:"select-box", id:"content-subject"}) %>
+    <div class="weight-bold-text">
+      学年
+        <span class="dispensable">任意</span>
+    </div>
+    <%= f.collection_select(:grade_id, Grade.all, :id, :name, {}, {class:"select-box", id:"content-grade"}) %>
       <%#<div class="weight-bold-text">
         タグ
         <span class="dispensable">任意</span>
       </div>
-      <div class="content-tag">%>
-    </div>
+      <div class="content-tag">
+    </div>%>
   </div>
 
   <!--- 教材の名前・内容 -->

@@ -6,7 +6,6 @@
 
 .top_page-box{
   max-width: 100%;
-  height: auto;
   display: flex;
   gap: 20vw;
   position: relative;
@@ -18,7 +17,7 @@
   width: 10vw;
   position: absolute;
   top: 70%;
-  padding-top: 70vh;
+  padding-top: 80vh;
 }
 
 .top_page-image {

@@ -7,4 +7,5 @@ class UsersController < ApplicationController
     @articles = @user.articles
     @questions = @user.questions
   end
+  
 end

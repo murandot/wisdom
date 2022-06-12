@@ -31,6 +31,12 @@
         </div>
       </div>
     </div>
+    <div class="image">
+      <%= image_tag @article.image.url, class: 'image' %>
+      <div class="favorite-btn">
+        <%= image_tag 'favorite-pink.svg', class: 'favorite-pink' %>
+      </div>
+    </div>
     <div class="category">
       <!-- 記事のジャンル -->
       <div class="tag-s">

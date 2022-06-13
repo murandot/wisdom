@@ -16,5 +16,6 @@ class Material < ApplicationRecord
   validates :subject_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
 
   mount_uploader :data, DataUploader
+  mount_uploader :image, ImageUploader
 
 end

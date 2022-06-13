@@ -53,7 +53,7 @@ class MaterialsController < ApplicationController
   private
   
   def material_params
-    params.require(:material).permit(:title, :content, :school_category_id, :subject_id, :grade_id, :data).merge(user_id: current_user.id)
+    params.require(:material).permit(:title, :content, :school_category_id, :subject_id, :grade_id, :data, :image).merge(user_id: current_user.id)
   end
   
   def set_material

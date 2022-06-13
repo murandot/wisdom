@@ -32,7 +32,6 @@ class User < ApplicationRecord
   validates :nickname, presence: true, length: { maximum: 40 }
   validates :school_category_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :subject_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :avatar, presence: true
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   validates :password, format: { with: VALID_PASSWORD_REGEX }, on: :create

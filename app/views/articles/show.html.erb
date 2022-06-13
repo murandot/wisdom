@@ -32,7 +32,11 @@
       </div>
     </div>
     <div class="image">
+    <% unless @article.image.nil? %>
       <%= image_tag @article.image.url, class: 'image' %>
+    <% else %>
+      <%= image_tag 'card.png', class: 'image' %>
+    <% end%>
       <div class="favorite-btn">
         <%= image_tag 'favorite-pink.svg', class: 'favorite-pink' %>
       </div>

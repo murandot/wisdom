@@ -3,7 +3,11 @@
     <% @articles.each do |article| %>
     <div class="article-card">
       <div class="article-card-image">
-        <%= image_tag article.image.index_thumb.url, class: 'article-card-image' %>
+      <% unless article.image.nil? %>
+        <%= image_tag article.image.thumb.url, class: 'material-card-image' %>
+      <% else %>
+          <%= image_tag 'card.png', class: 'material-card-image' %>
+      <% end %>
         <div class="favorite-btn">
           <%= image_tag 'favorite-pink.svg', class: 'favorite-pink' %>
         </div>

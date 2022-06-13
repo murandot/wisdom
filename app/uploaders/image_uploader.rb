@@ -13,7 +13,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  process resize_to_fit: [800, 450]
+  process resize_to_fit: [2000, 1000]
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url(*args)
@@ -31,7 +31,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :index_thumb do
+  version :thumb do
     process resize_to_fill: [660, 210, 'Center']
   end
 

@@ -12,7 +12,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
-
+ 
   process resize_to_fit: [2000, 1000]
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

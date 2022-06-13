@@ -33,7 +33,7 @@ class MaterialsController < ApplicationController
 
   def update
     if @material.update(material_params)
-      redirect_to action: :show
+      redirect_to material_path(id: @material.id)
     else
       render :edit
     end

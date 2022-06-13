@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_28_115528) do
+ActiveRecord::Schema.define(version: 2022_06_12_235953) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content", null: false
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2022_05_28_115528) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "data"
+    t.string "image"
     t.index ["user_id"], name: "index_materials_on_user_id"
   end
 

@@ -3,7 +3,15 @@
 <div class="main">
   <div class="content-create-form">
     <div class="content-create-form-main">
-      <%= render "form" %>
+    <h2 class="page-heading">相談を投稿する</h2>
+      <%= form_with model: @question, local: true do |f| %>
+      <%#= render 'shared/error_messages', model: f.object %>
+        <%= render "form", f: f %> 
+        <div class="create-btn-contents">
+          <%= f.submit "投稿する",class:"create-btn" %>
+          <%=link_to 'ホームに戻る', root_path, class:"back-btn link" %>
+        </div>
+      <% end %>
     </div> 
   </div>
 </div>

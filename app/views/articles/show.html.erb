@@ -47,9 +47,11 @@
           <%= @article.genre.name %>
       </div>
       <!-- 記事の学校種 -->
+      <% if @article.school_category.name != '--' %>
       <div class="tag-s">
           <%= @article.school_category.name %>
       </div> 
+      <% end %>
       <!-- 記事のタグ(任意）) -->
       <!--<div class="tag-s">
           <span>タグ</span>

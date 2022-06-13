@@ -16,5 +16,4 @@ CarrierWave.configure do |config|
       region: 'ap-northeast-1'
     }
     config.cache_storage = :fog
-  end  
 end

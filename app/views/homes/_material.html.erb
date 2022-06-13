@@ -4,7 +4,11 @@
     <% @materials.each do |material| %>
     <div class="material-card">
       <div class="material-card-image">
-        <%= image_tag 'card.png', class: 'material-card-image' %>
+        <% unless material.image.nil? %>
+          <%= image_tag material.image.thumb.url, class: 'material-card-image' %>
+        <% else %>
+          <%= image_tag 'card.png', class: 'material-card-image' %>
+        <% end %>
         <div class="favorite-btn">
           <%= image_tag 'favorite-pink.svg', class: 'favorite-pink' %>
         </div>

@@ -37,9 +37,11 @@
           <%= @question.genre.name %>
       </div>
       <!-- 相談の学校種 -->
+      <% if @question.school_category.name != '--' %>
       <div class="tag-s">
           <%= @question.school_category.name %>
       </div> 
+      <% end %>
       <!-- 相談のタグ(任意）) -->
       <!--<div class="tag-s">
           <span>タグ</span>

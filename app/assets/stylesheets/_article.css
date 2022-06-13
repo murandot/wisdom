@@ -83,6 +83,7 @@
   height: 210px;
   width: 660px;
   position: relative;
+  background-color: aqua;
 }
 
 .article-card-category {

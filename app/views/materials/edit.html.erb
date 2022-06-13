@@ -3,7 +3,16 @@
 <div class="main">
   <div class="content-create-form">
     <div class="content-create-form-main">
-      <%= render "form" %>
+      <h2 class="page-heading">教材を編集する</h2>
+      <%= form_with model: @material, local: true do |f| %>
+      <%#= render 'shared/error_messages', model: f.object %>
+        <%= render "form", f: f %> 
+        <div class="create-btn-contents">
+          <%= f.submit "更新する",class:"create-btn" %>
+          <%=link_to '編集をやめる', material_path(@material), class:"back-btn link" %>
+          <%= link_to "削除する", material_path(@material), method: :delete, class:"destroy-btn white link" %>
+        </div>
+      <% end %>
     </div> 
   </div>
 </div>

@@ -63,12 +63,43 @@ https://wisdom-2022.herokuapp.com/
 <br>
 
 # 実装した機能のGIF及び説明
-画像にて記載予定
+### 1. ログイン機能
+[![Image from Gyazo](https://i.gyazo.com/08aeb9cfb3c697c09a6f2b1b2e9b5f7f.gif)](https://gyazo.com/08aeb9cfb3c697c09a6f2b1b2e9b5f7f)
+- トップページの「ログイン」をクリックする
+- テスト用アカウントのメールアドレス（aaa111@gwisdom.com）・パスワード（aaa111）を入力する
+- 「ログインする」をクリックしログインする
+<br>
+<br>
+
+### 2. 投稿機能（例は教材であるが、記事・相談も同様）
+[![Image from Gyazo](https://i.gyazo.com/ea2999d6fe045ccb673c4f019a14ec3d.gif)](https://gyazo.com/ea2999d6fe045ccb673c4f019a14ec3d)
+[![Image from Gyazo](https://i.gyazo.com/5f29f1bfd4c92b4db1eb656d9e89b0da.gif)](https://gyazo.com/5f29f1bfd4c92b4db1eb656d9e89b0da)
+- ホームページのヘッダーにある「＋投稿」をクリックする
+- 教材のイメージ画像・情報・データを入力する
+- 「投稿する」をクリックして投稿する
+<br>
+<br>
+
+### 3. 一覧表示機能（例は教材であるが、記事・相談も同様）
+[![Image from Gyazo](https://i.gyazo.com/b6ac8a53559f81a2942260cad3bdb45b.gif)](https://gyazo.com/b6ac8a53559f81a2942260cad3bdb45b)
+- ホーム画面のヘッダーにある「教材を見る」をクリックする
+- 教材が一覧表示されているページへ遷移する
+- 上記２で投稿された教材もここに表示されている。
+<br>
+<br>
+
+### 4. 詳細表示機能（例は教材であるが、記事・相談も同様）
+[![Image from Gyazo](https://i.gyazo.com/6e911af87e1c539ffca75504374dc4a0.gif)](https://gyazo.com/6e911af87e1c539ffca75504374dc4a0)
+- 一覧表示ページで、見たい投稿のタイトルをクリックする
+- 詳細表示ページへ遷移する
+- 投稿の詳細情報を閲覧することができる
+
 <br>
 <br>
 <br>
 
 # 実装予定の機能
+- チャット機能（ビュー未完成のため）
 - 検索機能
 - お気に入り機能
 - フォロー機能

@@ -45,9 +45,9 @@ class MaterialsController < ApplicationController
   end
 
   def download
-    filepath = @material.data.current_path
-    stat = File::stat(filepath)
-    send_file(filepath, :filename => @material.data_identifier, :length => stat.size)
+    data = open(URI.encode(@material.data.url))
+      send_data(data.read, disposition: 'attachment', filename: @material[:data])
+
   end
 
   private

@@ -1,6 +1,6 @@
 <div class="materials">
   <h1 class="page-heading"><%= current_user.nickname %>さんにおすすめの教材</h1>
-  <div class="material-wrapper">
+  <div class="material-cards-wrapper">
     <% @materials.each do |material| %>
     <div class="material-card">
       <div class="material-card-image">
@@ -15,16 +15,15 @@
       </div>
       <div class="material-card-category">
         <div class="tag-s">
-            <%= material.school_category.name %>
+          <%= material.school_category.name %>
         </div>
         <% if material.grade.name != '--' %>
         <div class="tag-s">
-            <%= material.grade.name %>年
-          </div>
+          <%= material.grade.name %>年
         </div>
         <% end %>
         <div class="tag-s">
-            <%= material.subject.name %>
+          <%= material.subject.name %>
         </div>
         <%#<div class="tag-s">
             <span>タグ</span>

@@ -69,6 +69,7 @@ https://wisdom-2022.herokuapp.com/
 <br>
 
 # 実装予定の機能
+- 検索機能
 - お気に入り機能
 - フォロー機能
 - タグ検索機能
@@ -84,7 +85,7 @@ https://wisdom-2022.herokuapp.com/
 <br>
 
 # データベース設計
-[![Image from Gyazo](https://i.gyazo.com/275f9df5a082e25822d687b526e67c4f.png)](https://gyazo.com/275f9df5a082e25822d687b526e67c4f)
+[![Image from Gyazo](https://i.gyazo.com/4b9a27ed902c6999888bc49fb759c68a.png)](https://gyazo.com/4b9a27ed902c6999888bc49fb759c68a)
 <br>
 <br>
 <br>
